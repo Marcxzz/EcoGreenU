@@ -1,0 +1,12 @@
+.form-floating, #loginBtn, #signupBtn{
+    width: 450px;
+    max-width: 450px;
+}
+@media screen and (max-width: 482) {
+    #main{
+        display: block;
+    }
+    form, .form-floating, #loginBtn{
+        width: 100% !important;
+    }
+}
