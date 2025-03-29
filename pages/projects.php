@@ -1,31 +1,16 @@
+<?php include_once '../php/projects/projects.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="../js/darkmode.js" defer></script>
     <title>Projects | EcoGreenU</title>
-    <?php
-        $db = new mysqli("localhost", "root", "", "dbecogreenu");
-        if ($db->connect_error) {
-            exit("error during db connection");
-        }
-
-        $result = $db->query("SELECT tblprojects.*, SUM(tblpayments.amount) AS raisedAmount FROM tblprojects INNER JOIN tblpayments ON tblprojects.idProject = tblpayments.projectId GROUP BY tblprojects.idProject");
-        $projects = [];
-        if ($result == false) {
-            echo "error";
-        } else {
-            while ($row = $result->fetch_assoc()) {
-                // aggiunge la riga all'array di progetti
-                array_push($projects, $row);
-            }
-        }
-    ?>
 </head>
 <body>
     <div class="container-fluid p-0 m-0 position-absolute">
@@ -72,6 +57,11 @@
                                 <div class="card-body h-100">
                                     <h5 class="card-title"><?=$p["title"]?></h5>
                                     <p class="card-text"><?=$p["description"]?></p>
+                                    <?php if($p['status'] == 1): ?>
+                                        <span class="badge rounded-pill text-bg-secondary">Under review</span>
+                                    <?php elseif($p['status'] == 2): ?>
+                                        <span class="badge rounded-pill text-bg-danger">Closed</span>
+                                    <?php endif; ?>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Raised: <span class="text-success fw-bold">
@@ -80,7 +70,11 @@
                                 </ul>
                                 <div class="card-body d-flex">
                                     <form method="GET" action="project-details.php" class="ms-auto">
-                                        <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-success rounded-0 ms-auto">Donate</button>
+                                        <?php if($p['status'] == 0): ?>
+                                            <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-success rounded-0 ms-auto">Donate</button>
+                                        <?php else: ?>
+                                            <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-outline-success rounded-0 ms-auto">View</button>
+                                        <?php endif; ?>
                                     </form>
                                 </div>
                             </div>

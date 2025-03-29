@@ -1,40 +1,12 @@
-<?php
-    session_start();
-    $user;
-    
-    if ($_SESSION['user_id'] != null){ // l'utente è autenticato
-        $db = new mysqli("localhost", "root", "", "dbecogreenu");
-        if ($db->connect_error) {
-            exit("error during db connection");
-        }
-
-        if (isset($_SESSION['user_id'])) {
-            $user_id = $_SESSION['user_id'];
-            
-            $result = $db->query("SELECT * FROM tblusers WHERE idUser = '$user_id'");
-            if ($result->num_rows > 0) {
-                $user = $result->fetch_assoc();
-                // print_R($row);
-            
-            } else {
-                echo 'user not found';
-            }
-            // $result = $db->query("");
-        }
-    } else { // l'utente non è autenticato, redirect alla pagina login
-        header("location: login.php");
-    }
-
-    $form_error_msg = '';
-?>
+<?php include_once '../php/user/edit-profile.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -111,42 +83,6 @@
         </div>
 
 
-        <?php
-            $pwFormMsg = '';
-            if (isset($_POST['changePassword'])) {
-                $db = new mysqli("localhost", "root", "", "dbecogreenu");
-                if ($db->connect_error) {
-                    exit("error during db connection");
-                }
-
-                $userId = $_SESSION['user_id'];
-                $userPwHash = $user['passwordHash'];
-                $oldPw = $_POST['oldPassword'];
-                $newPw = $_POST['newPassword'];
-
-                // if (strlen($newPw) < 8) {
-                //     $pwFormMsg = 'Password can\'t be less than 8 characters';
-                //     return;
-                // }
-
-                if (password_verify($oldPw, $userPwHash)) {
-                    $newPasswordHash = password_hash($newPw, PASSWORD_DEFAULT);
-
-                    $stmt = $db->prepare("UPDATE tblusers SET passwordhash = ? WHERE iduser = ?");
-                    $stmt->bind_param("si", $newPasswordHash, $userId);
-                    
-                    if ($stmt->execute()) {
-                        $pwFormMsg = "Password changed successfully!";
-                    } else {
-                        $pwFormMsg = "Error updating password.";
-                    }
-
-                    $stmt->close();
-                } else {
-                    $pwFormMsg = "Old password is incorrect.";
-                }
-            }
-        ?>
         <div class="modal fade" tabindex="-1" id="changePasswordModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0">
@@ -174,7 +110,6 @@
             </div>
         </div>
 
-
         <div class="modal fade" tabindex="-1" id="saveChangesModal" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0">
@@ -193,24 +128,6 @@
                 </div>
             </div>
         </div>
-        <?php
-            if (isset($_POST['editProfile'])) {
-                $db = new mysqli("localhost", "root", "", "dbecogreenu");
-                if ($db->connect_error) {
-                    exit("error during db connection");
-                }
-
-                $userId = $_SESSION['user_id'];
-                $firstName = $_POST['firstName'];
-                $lastName = $_POST['lastName'];
-                $email = $_POST['email'] != $user['email'] ? $_POST['email'] : $user['email'];
-                $phoneNumber = $_POST['phoneNumber'] || NULL;
-
-                $result = $db->query("UPDATE tblusers SET firstName = '$firstName', lastName = '$lastName', email = '$email', phoneNumber = '$phoneNumber' WHERE idUser = $userId");
-                header('location: edit-profile.php');
-            }
-        ?>
-
 
         <div class="modal fade" tabindex="-1" id="deleteProfileModal" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
@@ -230,19 +147,6 @@
                 </div>
             </div>
         </div>
-        <?php
-            if (isset($_POST['deleteUser'])) {
-                $db = new mysqli("localhost", "root", "", "dbecogreenu");
-                if ($db->connect_error) {
-                    exit("error during db connection");
-                }
-
-                $userId = $_SESSION['user_id'];
-                $db->query("DELETE FROM tblusers WHERE iduser = $userId");
-                $_SESSION['user_id'] = null;
-                header('location: ../index.php');
-            }
-        ?>
     </div>
     <script>
         const myModal = document.getElementById('myModal')

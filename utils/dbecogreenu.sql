@@ -1,177 +1,74 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Creato il: Mar 19, 2025 alle 10:58
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.0.30
+-- queries must be executed in this order
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE DATABASE IF NOT EXISTS dbEcoGreenU;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `dbecogreenu`
---
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `tblpaymentmethods`
---
-
-CREATE TABLE `tblpaymentmethods` (
-  `idPaymentMethod` int(11) NOT NULL,
-  `name` char(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `tblpaymentmethods`
---
-
-INSERT INTO `tblpaymentmethods` (`idPaymentMethod`, `name`) VALUES
+CREATE TABLE IF NOT EXISTS tblpaymentmethods (
+  idPaymentMethod INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name CHAR(50) NOT NULL
+);
+INSERT INTO tblpaymentmethods (idPaymentMethod name) VALUES
 (1, 'Bank transfer'),
 (2, 'VISA'),
 (3, 'MasterCard'),
 (4, 'Debit card');
 
--- --------------------------------------------------------
 
---
--- Struttura della tabella `tblpayments`
---
+CREATE TABLE IF NOT EXISTS tblusers (
+  idUser INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  firstName CHAR(50) NOT NULL,
+  lastName CHAR(50) NOT NULL,
+  email CHAR(255) NOT NULL,
+  phoneNumber CHAR(20),
+  passwordHash CHAR(128) NOT NULL,
+  profilePicPath CHAR(100)
+);
+INSERT INTO tblusers (idUser, firstName, lastName, email, phoneNumber, passwordHash, profilePicPath) VALUES
+(1, 'Mario', 'Rossi', 'mario.rossi@example.com', '+39 347 234 5678', '$2y$10$gf1Xwk8FlL3S9xKn18hs..u3G7jDljXcXAoi9r1AbYABweqPTT3OK', NULL),
+(2, 'Luigi', 'Bianchi', 'luigi.bianchi@example.it', NULL, '$2y$10$egWzzRqgoo5fR1mU.1tsHuAaEoncS8Hqgah7c1z7V6t0/sUzXV5ZO', NULL),
+(3, 'Ugo', 'Verdi', 'ugo.verdi@test.org', '+39 331 898 2023', '$2y$10$OUjRv6VgJlJ4SAOs8ejxiOuM/eERpLXB0rYx.hr2CZ4M/ApTI55Dq', NULL),
+(4, 'John', 'Doe', 'john.doe@gmail.com', NULL, '$2y$10$8/YhhUZ/vBldYa2cbfE1leGsz9KGGPM59FCpuNKUAzZWwbXPr9PHW', NULL);
 
-CREATE TABLE `tblpayments` (
-  `idPayment` int(11) NOT NULL,
-  `amount` decimal(10,0) NOT NULL,
-  `description` char(150) DEFAULT NULL,
-  `emission` datetime NOT NULL,
-  `paymentMethod` int(11) NOT NULL,
-  `public` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS tblprojects (
+  idProject INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  title CHAR(30) NOT NULL,
+  description CHAR(250) NOT NULL,
+  fundraiser INT NOT NULL,
+  targetAmount DECIMAL(10,2) NOT NULL,
+  deadline DATETIME NOT NULL,
+  status CHAR(1) NOT NULL,
+    FOREIGN KEY (fundraiser) REFERENCES tblusers(iduser)
+);
+INSERT INTO tblprojects (idProject, title, description, fundraiser, targetAmount, deadline, status) VALUES
+(1, 'Forest Restoration Initiative', 'Reforestation project to restore degraded areas and promote biodiversity.', 1, 50000, '2025-12-31 23:59:59', '0'),
+(2, 'Solar Energy for Rural Areas', 'Project to install solar panels in rural areas, improving access to renewable energy.', 2, 150000, '2025-06-30 23:59:59', '1'),
+(3, 'Recycling for a Better Future', 'Establishment of a recycling plant to reduce plastic pollution in cities.', 1, 30000, '2025-09-15 23:59:59', '0'),
+(4, 'Sustainable Urban Agriculture', 'Urban agriculture project using environmentally sustainable farming techniques to feed cities.', 3, 70000, '2025-08-01 23:59:59', '2'),
+(5, 'Clean Oceans Campaign', 'Project to clean the seas and oceans with the help of environmentally friendly technologies for waste collection.', 3, 200000, '2025-10-15 23:59:59', '0');
 
---
--- Struttura della tabella `tblprojects`
---
 
-CREATE TABLE `tblprojects` (
-  `idProject` int(11) NOT NULL,
-  `img` char(100) NOT NULL,
-  `title` char(30) NOT NULL,
-  `description` char(250) NOT NULL,
-  `fundraiser` int(11) NOT NULL,
-  `targetAmount` decimal(10,0) NOT NULL,
-  `deadline` datetime NOT NULL,
-  `status` char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `tblprojects`
---
-
-INSERT INTO `tblprojects` (`idProject`, `img`, `title`, `description`, `fundraiser`, `targetAmount`, `deadline`, `status`) VALUES
-(1, 'img_1.jpg', 'Forest Restoration Initiative', 'Reforestation project to restore degraded areas and promote biodiversity.', 1, 50000, '2025-12-31 23:59:59', '0');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `tblusers`
---
-
-CREATE TABLE `tblusers` (
-  `idUser` int(11) NOT NULL,
-  `name` char(50) NOT NULL,
-  `surname` char(50) NOT NULL,
-  `email` char(255) NOT NULL,
-  `phoneNumber` char(20) DEFAULT NULL,
-  `passwordHash` char(128) NOT NULL,
-  `profilePicPath` char(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `tblusers`
---
-
-INSERT INTO `tblusers` (`idUser`, `name`, `surname`, `email`, `phoneNumber`, `passwordHash`, `profilePicPath`) VALUES
-(1, 'Mario', 'Rossi', 'mario.rossi@example.com', '+39 347 2345678', '$2y$10$gf1Xwk8FlL3S9xKn18hs..u3G7jDljXcXAoi9r1AbYABweqPTT3OK', NULL);
-
---
--- Indici per le tabelle scaricate
---
-
---
--- Indici per le tabelle `tblpaymentmethods`
---
-ALTER TABLE `tblpaymentmethods`
-  ADD PRIMARY KEY (`idPaymentMethod`);
-
---
--- Indici per le tabelle `tblpayments`
---
-ALTER TABLE `tblpayments`
-  ADD PRIMARY KEY (`idPayment`),
-  ADD KEY `paymentMethod` (`paymentMethod`);
-
---
--- Indici per le tabelle `tblprojects`
---
-ALTER TABLE `tblprojects`
-  ADD KEY `fundraiser` (`fundraiser`);
-
---
--- Indici per le tabelle `tblusers`
---
-ALTER TABLE `tblusers`
-  ADD PRIMARY KEY (`idUser`);
-
---
--- AUTO_INCREMENT per le tabelle scaricate
---
-
---
--- AUTO_INCREMENT per la tabella `tblpaymentmethods`
---
-ALTER TABLE `tblpaymentmethods`
-  MODIFY `idPaymentMethod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT per la tabella `tblpayments`
---
-ALTER TABLE `tblpayments`
-  MODIFY `idPayment` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `tblusers`
---
-ALTER TABLE `tblusers`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
-
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `tblpayments`
---
-ALTER TABLE `tblpayments`
-  ADD CONSTRAINT `tblpayments_ibfk_1` FOREIGN KEY (`paymentMethod`) REFERENCES `tblpaymentmethods` (`idPaymentMethod`);
-
---
--- Limiti per la tabella `tblprojects`
---
-ALTER TABLE `tblprojects`
-  ADD CONSTRAINT `tblprojects_ibfk_1` FOREIGN KEY (`fundraiser`) REFERENCES `tblusers` (`idUser`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE IF NOT EXISTS tblPayments (
+  idPayment INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  amount DECIMAL(10,2) NOT NULL,
+  description CHAR(150),
+  date DATETIME NOT NULL,
+  projectId INT NOT NULL,
+  paymentMethod INT NOT NULL,
+  userId INT NOT NULL,
+  public BOOLEAN NOT NULL,
+  FOREIGN KEY (projectId) REFERENCES tblprojects(idProject),
+  FOREIGN KEY (userId) REFERENCES tblusers(iduser),
+  FOREIGN KEY (paymentMethod) REFERENCES tblpaymentmethods(idPaymentMethod)
+);
+INSERT INTO tblPayments (idPayment, amount, description, date, projectId, paymentMethod, userId, public) VALUES
+(1, 50.00, 'Donazione per progetto ecologico', '2025-03-21 10:15:00', 1, 2, 1, TRUE),
+(2, 75.50, 'Support for sustainable innovation', '2025-03-21 11:30:00', 2, 3, 2, TRUE),
+(3, 20.00, 'Piccolo contributo alla causa', '2025-03-21 12:45:00', 3, 1, 3, TRUE),
+(4, 100.00, NULL, '2025-03-21 13:00:00', 4, 4, 1, FALSE),
+(5, 35.75, 'Participation in the social project', '2025-03-21 14:20:00', 5, 2, 2, TRUE),
+(6, 60.00, NULL, '2025-03-21 15:10:00', 1, 3, 3, FALSE),
+(7, 45.30, NULL, '2025-03-21 16:25:00', 2, 1, 1, TRUE),
+(8, 90.00, 'Support for solidarity initiative', '2025-03-21 17:50:00', 3, 4, 2, TRUE),
+(9, 110.50, 'Donazione per ricerca scientifica', '2025-03-21 18:30:00', 4, 2, 3, TRUE),
+(10, 55.20, NULL, '2025-03-21 19:15:00', 5, 1, 1, FALSE);

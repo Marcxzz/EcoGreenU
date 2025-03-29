@@ -1,20 +1,5 @@
-<?php
-    $db = new mysqli("localhost", "root", "", "dbecogreenu");
-    if ($db->connect_error) {
-        exit("error during db connection");
-    }
+<?php include_once 'php/homepage.php' ?>
 
-    $result = $db->query("SELECT tblprojects.*, SUM(tblpayments.amount) AS raisedAmount FROM tblprojects INNER JOIN tblpayments ON tblprojects.idProject = tblpayments.projectId GROUP BY tblprojects.idProject LIMIT 3");
-    $projects = [];
-    if ($result == false) {
-        echo "error";
-    } else {
-        while ($row = $result->fetch_assoc()) {
-            // aggiunge la riga all'array di progetti
-            array_push($projects, $row);
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +51,6 @@
                     <h1 class="mb-4">Support <span class="highlight fw-bold">green</span> projects and contribute to change the world.</h1>
                     <a class="btn btn-success rounded-0 fs-5 mt-4 px-3 py-2" id="donateNowBtn">Donate now</a>
                 </div>
-                <!-- <img src="images/hero.jpg" id="hero" class="img-fluid w-100" alt="EcoGreenU"> -->
             </div>
 
             <div id="popularProjects" style="scroll-margin-top: 5em;">

@@ -1,48 +1,17 @@
+<?php include_once '../php/user/login.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="../js/darkmode.js" defer></script>
     <title>Login | EcoGreenU</title>
-    <?php
-        session_start();
-        // ini_set("display_errors", 0);
-        $form_error_msg = '';
-
-        $db = new mysqli("localhost", "root", "", "dbecogreenu");
-        if ($db->connect_error) {
-            exit("error during db connection");
-        }
-
-        if (isset($_POST["email"]) && isset($_POST["password"])) {
-            $email = $_POST['email'];
-            $password = $_POST["password"];
-            
-            $result = $db->query("SELECT * FROM tblusers WHERE email = '$email';");
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                // Verifica la password
-                if (password_verify($password, $row['passwordHash'])) {
-                    // Autenticazione riuscita
-                    $_SESSION['user_id'] = $row['idUser'];
-                    // $form_error_msg = $row['idUser'];
-                    header("location: profile.php");
-                } else {
-                    // echo "Password errata!";
-                    $form_error_msg = 'Wrong password!';
-                }
-            } else {
-                // echo "Email non trovata!";
-                $form_error_msg = 'Email not found!';
-            }
-        }
-    ?>
 </head>
 <body>
     <div class="container-fluid p-0 m-0 position-absolute">

@@ -1,53 +1,11 @@
-<?php
-    $project_id;
-    $project;
-    $donations = [];
+<?php include_once '../php/projects/project-details.php' ?>
 
-    if (isset($_GET['project-id'])) {
-        $project_id = $_GET['project-id'];
-
-        $db = new mysqli("localhost", "root", "", "dbecogreenu");
-        if ($db->connect_error) {
-            exit("error during db connection");
-        }
-
-        $result = $db->query("SELECT * FROM tblprojects WHERE idProject = $project_id");
-        if ($result->num_rows > 0) {
-            $project = $result->fetch_assoc();
-
-            $result = $db->query("SELECT tblpayments.*,
-                                         tblusers.firstName,
-                                         tblusers.lastName
-                                    FROM tblprojects
-                                INNER JOIN tblpayments ON tblprojects.idproject = tblpayments.projectid
-                                INNER JOIN tblusers ON tblpayments.userid = tblusers.idUser
-                                   WHERE idProject = $project_id");
-            
-            if ($result == false) {
-                echo 'no donations for this project';
-            } else {
-                while ($row = $result->fetch_assoc()) {
-                    array_push($donations, $row);
-                }
-            }
-        } else {
-            echo 'no project found with this ID';
-        }
-    } else {
-        echo 'no id provided';
-    }
-
-    function formatDate($date, $format){
-        $datetime = new DateTime($date);
-        return $datetime->format($format);
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -93,7 +51,14 @@
                     // print_r($donations);
                 ?>
             
-                <h2 class="mt-4 mb-3 w-75 mx-auto px-2"><?=$project['title']?></h2>
+                <div class="d-flex flex-row align-items-center justify-content-start gap-4 mt-4 mb-3 w-75 mx-auto px-2">
+                    <h2><?=$project['title']?></h2>
+                    <?php if($project['status'] == 1): ?>
+                        <span class="badge rounded-pill text-bg-secondary fs-6">Under review</span>
+                    <?php elseif($project['status'] == 2): ?>
+                        <span class="badge rounded-pill text-bg-danger fs-6">Closed</span>
+                    <?php endif; ?>
+                </div>
                 <div class="row g-3 w-75 mx-auto">
                     <div class="col-9">
                         <img class="w-100 project-img" src="../assets/images/projects/proj-<?=$project["idProject"]?>.jpg" />
@@ -106,6 +71,12 @@
                             <p class="m-0"><?=count($donations)?> donations</p>
                             <!-- <hr>
                             <p class="m-0"><?=$project['description']?></p> -->
+                            <?php if($owner): ?>
+                                <button type="button" class="btn btn-outline-success w-100 rounded-0 mt-3">Edit project</button>
+                            <?php endif; ?>
+                            <?php if($project['status'] == 0): ?>
+                                <button type="button" class="btn btn-success w-100 rounded-0 mt-3">Donate</button>
+                            <?php endif; ?>
                         </div>
                         <div class="border rounded-0 p-3 mt-3">
                             <h4>Recent donations</h4>
