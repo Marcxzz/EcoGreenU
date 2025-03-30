@@ -17,9 +17,9 @@ x dark mode
 - modifica immagine profilo utente
 
 ## feature secondarie
+- cambiare immagini progetti
 - uniformare dimensioni immagini nelle card
 - centrare contenuto edit-profile.php
-- centrare in basso pulsante 'edit' nel profilo
 - bloccare footer in basso
 - bloccare info utente da scroll nella pagina profilo
 - fixare colore sfondo input login/signup per l'autofill
@@ -42,3 +42,4 @@ x dark mode
 - verificare funzionamento modifica profilo
 - inserire logo
 - cambiare link al navbar brand nelle pagine
+- centrare in basso pulsante 'edit' nel profilo

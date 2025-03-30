@@ -139,3 +139,10 @@ input.form-control:focus{
     aspect-ratio: 16/9;
     object-fit: cover;
 }
+
+.badge.text-success{
+    border: 1px solid  var(--primary-green) !important;
+}
+.badge.badge-outlined {
+    background-color: transparent !important;
+}

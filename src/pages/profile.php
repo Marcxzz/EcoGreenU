@@ -72,18 +72,20 @@
                             <div class="col">
                                 <div class="card rounded-0">
                                     <img src="../assets/images/projects/proj-<?=$p["idProject"]?>.jpg" class="card-img-top" alt="<?=$p["title"]?>">
-                                    <div class="card-body h-100">
+                                    <div class="card-body h-100 d-flex flex-column">
                                         <h5 class="card-title"><?=$p["title"]?></h5>
-                                        <p class="card-text"><?=$p["description"]?></p>
-                                        <hr>
-                                        <div class="d-flex">
-                                            <p class="text-secondary">
-                                                Deadline: <?=formatDate($p['deadline'], 'd/m/Y H:i:s')?>
-                                                <br>
-                                                Target: <?=number_format($p["targetAmount"], 2) ?>$
-                                            </p>
+                                        <p class="card-text m-0"><?=$p["description"]?></p>
+                                        <div class="mt-auto">
+                                            <hr>
+                                            <div class="d-flex">
+                                                <p class="text-secondary">
+                                                    Deadline: <?=formatDate($p['deadline'], 'd/m/Y H:i:s')?>
+                                                    <br>
+                                                    Target: <?=number_format($p["targetAmount"], 2) ?>$
+                                                </p>
+                                            </div>
+                                            <a href="project-details.php?project-id=<?=$p['idProject']?>&edit=true" class="btn btn-outline-success rounded-0 w-100">Edit</a>
                                         </div>
-                                        <a href="project-details.php?project-id=<?=$p['idProject']?>&edit=true" class="btn btn-outline-success rounded-0 w-100">Edit</a>
                                     </div>
                                 </div>
                             </div>

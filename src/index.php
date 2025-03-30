@@ -1,4 +1,4 @@
-<?php include_once 'php/homepage.php' ?>
+<?php include_once 'php/index.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">

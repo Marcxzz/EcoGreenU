@@ -58,7 +58,7 @@
                                     <h5 class="card-title"><?=$p["title"]?></h5>
                                     <p class="card-text"><?=$p["description"]?></p>
                                     <?php if($p['status'] == 1): ?>
-                                        <span class="badge rounded-pill text-bg-secondary">Under review</span>
+                                        <span class="badge badge-outlined rounded-pill text-success">Under review</span>
                                     <?php elseif($p['status'] == 2): ?>
                                         <span class="badge rounded-pill text-bg-danger">Closed</span>
                                     <?php endif; ?>

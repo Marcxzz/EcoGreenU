@@ -54,7 +54,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-start gap-4 mt-4 mb-3 w-75 mx-auto px-2">
                     <h2><?=$project['title']?></h2>
                     <?php if($project['status'] == 1): ?>
-                        <span class="badge rounded-pill text-bg-secondary fs-6">Under review</span>
+                        <span class="badge badge-outlined rounded-pill text-success fs-6">Under review</span>
                     <?php elseif($project['status'] == 2): ?>
                         <span class="badge rounded-pill text-bg-danger fs-6">Closed</span>
                     <?php endif; ?>
@@ -66,16 +66,16 @@
                     <div class="col-3">
                         <div class="border rounded-0 p-3">
                             <h3 class="text-success">&lt;total raised&gt; $</h3>
-                            <h6 class="mb-3">Goal: <?=number_format($project['targetAmount'], 2)?> $</h6>
+                            <h5 class="mb-3">Goal: <?=number_format($project['targetAmount'], 2)?> $</h5>
                             <p class="m-0">Before: <?=formatDate($project['deadline'], 'd/m/Y H:i:s')?></p>
                             <p class="m-0"><?=count($donations)?> donations</p>
                             <!-- <hr>
                             <p class="m-0"><?=$project['description']?></p> -->
-                            <?php if($owner): ?>
-                                <button type="button" class="btn btn-outline-success w-100 rounded-0 mt-3">Edit project</button>
-                            <?php endif; ?>
                             <?php if($project['status'] == 0): ?>
                                 <button type="button" class="btn btn-success w-100 rounded-0 mt-3">Donate</button>
+                            <?php endif; ?>
+                            <?php if($owner): ?>
+                                <button type="button" class="btn btn-outline-success w-100 rounded-0 mt-3">Edit project</button>
                             <?php endif; ?>
                         </div>
                         <div class="border rounded-0 p-3 mt-3">

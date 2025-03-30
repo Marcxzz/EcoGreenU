@@ -4,7 +4,7 @@
         exit("error during db connection");
     }
 
-    $result = $db->query("SELECT tblprojects.*, SUM(tblpayments.amount) AS raisedAmount FROM tblprojects INNER JOIN tblpayments ON tblprojects.idProject = tblpayments.projectId GROUP BY tblprojects.idProject LIMIT 3");
+    $result = $db->query("SELECT tblprojects.*, SUM(tblpayments.amount) AS raisedAmount FROM tblprojects INNER JOIN tblpayments ON tblprojects.idProject = tblpayments.projectId WHERE status = 0 GROUP BY tblprojects.idProject LIMIT 3");
     $projects = [];
     if ($result == false) {
         echo "error";
