@@ -1,6 +1,9 @@
-# Eequisiti
+# Requisiti
 - [x] permettere cancellazione account utente
 - [ ] permettere inserimento/modifica/cancellazione contenuti (immagini progetti)
+    - [ ] rinominare immagine
+    - [ ] ? anteprima immagine
+    - [ ] salvare immagine in cartella
 - [x] evitare sql injection
 - [x] dark mode
 - [ ] 100% responsive

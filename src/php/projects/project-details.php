@@ -16,7 +16,7 @@
         $result = $db->query("SELECT * FROM tblprojects WHERE idProject = $project_id");
         if ($result->num_rows > 0) {
             $project = $result->fetch_assoc();
-            $owner = $_SESSION['user_id'] == $project['fundraiser'] ? true : false;
+            $owner = isset($_SESSION['user_id']) && $_SESSION['user_id'] == $project['fundraiser'] ? true : false;
 
             $result = $db->query("SELECT tblpayments.*,
                                          tblusers.firstName,
