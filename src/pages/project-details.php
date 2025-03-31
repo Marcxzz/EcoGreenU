@@ -72,7 +72,11 @@
                             <!-- <hr>
                             <p class="m-0"><?=$project['description']?></p> -->
                             <?php if($project['status'] == 0): ?>
-                                <button type="button" class="btn btn-success w-100 rounded-0 mt-3">Donate</button>
+                                <?php if(isset($_SESSION['user_id'])): ?>
+                                    <button type="button" class="btn btn-success w-100 rounded-0 mt-3">Donate</button>
+                                <?php else: ?>
+                                    <button class="btn btn-success w-100 rounded-0 mt-3" disabled>You must be logged in to donate</button>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <?php if($owner): ?>
                                 <button type="button" class="btn btn-outline-success w-100 rounded-0 mt-3">Edit project</button>

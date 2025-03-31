@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $db = new mysqli("localhost", "root", "", "dbecogreenu");
     if ($db->connect_error) {
         exit("error during db connection");

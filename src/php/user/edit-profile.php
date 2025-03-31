@@ -12,7 +12,7 @@
         if (isset($_SESSION['user_id'])) {
             $user_id = $_SESSION['user_id'];
             
-            $result = $db->query("SELECT * FROM tblusers WHERE idUser = '$user_id'");
+            $result = $db->query("SELECT * FROM tblusers WHERE idUser = $user_id");
             if ($result->num_rows > 0) {
                 $user = $result->fetch_assoc();
                 // print_R($row);
@@ -51,16 +51,15 @@
         if (password_verify($oldPw, $userPwHash)) {
             $newPasswordHash = password_hash($newPw, PASSWORD_DEFAULT);
 
-            $stmt = $db->prepare("UPDATE tblusers SET passwordhash = ? WHERE iduser = ?");
-            $stmt->bind_param("si", $newPasswordHash, $userId);
+            $query = $db->prepare("UPDATE tblusers SET passwordhash = ? WHERE iduser = ?");
+            $query->bind_param("si", $newPasswordHash, $userId);
             
-            if ($stmt->execute()) {
+            if ($query->execute()) {
                 $pwFormMsg = "Password changed successfully!";
             } else {
                 $pwFormMsg = "Error updating password.";
             }
-
-            $stmt->close();
+            $query->close();
         } else {
             $pwFormMsg = "Old password is incorrect.";
         }
@@ -81,8 +80,12 @@
         $email = $_POST['email'] != $user['email'] ? $_POST['email'] : $user['email'];
         $phoneNumber = $_POST['phoneNumber'] || NULL;
 
-        $result = $db->query("UPDATE tblusers SET firstName = '$firstName', lastName = '$lastName', email = '$email', phoneNumber = '$phoneNumber' WHERE idUser = $userId");
+        $query = $db->prepare("UPDATE tblusers SET firstName = ?, lastName = ?, email = ?, phoneNumber = ? WHERE idUser = ?");
+        $query->bind_param("ssssi", $firstName, $lastName, $email, $phoneNumber, $userId);
+        $query->execute();
+        
         header('location: edit-profile.php');
+        $query->close();
     }
 ?>
 
@@ -95,7 +98,11 @@
         }
 
         $userId = $_SESSION['user_id'];
-        $db->query("DELETE FROM tblusers WHERE iduser = $userId");
+        
+        $query = $db->prepare("DELETE FROM tblusers WHERE iduser = ?");
+        $query->bind_param("i", $userId);
+        $query->execute();
+        
         $_SESSION['user_id'] = null;
         header('location: ../index.php');
     }

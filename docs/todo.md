@@ -1,38 +1,37 @@
-# requisiti
-x permettere cancellazione account utente
-- permettere inserimento/modifica/cancellazione contenuti (immagini progetti)
-- evitare sql injection
-x dark mode
-- 100% responsive
-- documento scelte progettuali
-? eseguire query del file .sql all'avvio
-? cookie toast funzionante
+# Eequisiti
+- [x] permettere cancellazione account utente
+- [ ] permettere inserimento/modifica/cancellazione contenuti (immagini progetti)
+- [x] evitare sql injection
+- [x] dark mode
+- [ ] 100% responsive
+- [ ] ricerca dinamica progetti (ajax?)
+- [ ] report scelte progettuali
+- [x] file .sql con create table
 
 
-# todo
-## main features
+# To-do
+## Main features
 - finire pagina dettagli progetto
 - fare pagina creazione progetto
 - fare pagina modifica progetto
 - modifica immagine profilo utente
 
-## feature secondarie
+## Feature secondarie
 - cambiare immagini progetti
 - uniformare dimensioni immagini nelle card
 - centrare contenuto edit-profile.php
 - bloccare footer in basso
 - bloccare info utente da scroll nella pagina profilo
 - fixare colore sfondo input login/signup per l'autofill
-? aggiungere validation bootstrap ai forms
-? filtri pagina progetti
-? ricerca progetti
+- ? aggiungere validation bootstrap ai forms
+- ? filtrare progetti
 
-## non funzionano
+## Non funzionano
 - mettere un dropdown nella navbar per il profilo
 - mettere icon links
 
 
-# done
+# Done
 - login funzionante al 100% con redirecting
 - cambiare font
 - aggiornare navbar

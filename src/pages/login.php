@@ -58,9 +58,7 @@
                     <label for="floatingPassword">Password</label>
                 </div>
                 <button type="submit" class="btn btn-success w-100 rounded-0" id="loginBtn">Log in</button>
-                <?php
-                    echo '<p class="text-danger text-center my-3">'.$form_error_msg.'</p>';
-                ?>
+                <p class="text-danger text-center my-3"><?=$form_error_msg?></p>
                 <p class="mb-0 text-center" style="margin-top: 50px;">Not registered yet? <a class="text-success" href="../pages/signup.php">Create an account</a></p>
             </form>
         </div>

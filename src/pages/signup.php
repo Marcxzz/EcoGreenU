@@ -50,23 +50,23 @@
             <form action="signup.php" method="POST">
                 <img src="../assets/logo/logo-light.svg" id="logo" alt="EcoGreenU logo" class="w-100 mb-5">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John">
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" required>
                     <label for="floatingFirstName">First name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe">
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" required>
                     <label for="floatingLastName">Last name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com">
+                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" required>
                     <label for="floatingEmail">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password" required>
                     <label for="floatingPassword">Password</label>
                 </div>
                 <button type="submit" class="btn btn-success w-100 rounded-0" id="signupBtn">Sign up</button>
-                <?=$formMsg?>
+                <p class="text-danger text-center my-3"><?=$formMsg?></p>
                 <p class="mb-0 text-center" style="margin-top: 50px;">Already registered? <a class="text-success" href="../pages/login.php">Log in</a></p>
             </form>
         </div>

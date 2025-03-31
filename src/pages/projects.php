@@ -70,7 +70,8 @@
                                 </ul>
                                 <div class="card-body d-flex">
                                     <form method="GET" action="project-details.php" class="ms-auto">
-                                        <?php if($p['status'] == 0): ?>
+                                        <!-- <?=print_r($_SESSION)?> -->
+                                        <?php if($p['status'] == 0 && isset($_SESSION['user_id'])): ?>
                                             <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-success rounded-0 ms-auto">Donate</button>
                                         <?php else: ?>
                                             <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-outline-success rounded-0 ms-auto">View</button>

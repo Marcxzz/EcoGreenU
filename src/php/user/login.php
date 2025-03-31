@@ -11,23 +11,24 @@
     if (isset($_POST["email"]) && isset($_POST["password"])) {
         $email = $_POST['email'];
         $password = $_POST["password"];
-        
-        $result = $db->query("SELECT * FROM tblusers WHERE email = '$email';");
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            // Verifica la password
-            if (password_verify($password, $row['passwordHash'])) {
-                // Autenticazione riuscita
-                $_SESSION['user_id'] = $row['idUser'];
-                // $form_error_msg = $row['idUser'];
+
+        $query = $db->prepare("SELECT * FROM tblusers WHERE email = ?");
+        $query->bind_param("s", $email);
+        $query->execute();
+        $result = $query->get_result()->fetch_assoc();
+        // print_r($result);
+        // return;
+
+        if ($result) {
+            if (password_verify($password, $result['passwordHash'])) {
+                $_SESSION['user_id'] = $result['idUser'];
                 header("location: profile.php");
             } else {
-                // echo "Password errata!";
                 $form_error_msg = 'Wrong password!';
             }
         } else {
-            // echo "Email non trovata!";
             $form_error_msg = 'Email not found!';
         }
+        $query->close();
     }
 ?>

@@ -11,13 +11,18 @@
         $password = $_POST['password'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
-
-        if (strlen($password) > 8) {
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
         
-            $result = $db->query("INSERT INTO tblusers (firstName, lastName, email, passwordHash) VALUES ('$firstName', '$lastName', '$email', '$password_hash')");
+        
+        if (strlen($password) >= 8) {
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
             
-            if ($result) {
+            $query = $db->prepare("INSERT INTO tblusers (firstName, lastName, email, passwordHash) VALUES (?, ?, ?, ?)");
+            $query->bind_param("ssss", $firstName, $lastName, $email, $password_hash);
+            $query->execute();
+            $result = $query->get_result();
+            // $result = $db->query("INSERT INTO tblusers (firstName, lastName, email, passwordHash) VALUES ('$firstName', '$lastName', '$email', '$password_hash')");
+            
+            if (!$result) {
                 header('location: profile.php');
             } else {
                 echo "Error";
@@ -26,4 +31,5 @@
             $formMsg = 'Password must be at least 8 characters long.';
         }
     }
+    $query->close();
 ?>
