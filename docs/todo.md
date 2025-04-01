@@ -2,8 +2,8 @@
 - [x] permettere cancellazione account utente
 - [ ] permettere inserimento/modifica/cancellazione contenuti (immagini progetti)
     - [ ] rinominare immagine
-    - [ ] ? anteprima immagine
     - [ ] salvare immagine in cartella
+    - [ ] ? anteprima immagine
 - [x] evitare sql injection
 - [x] dark mode
 - [ ] 100% responsive
@@ -13,16 +13,13 @@
 
 
 # To-do
-## Main features
+## Importanti
 - finire pagina dettagli progetto
-- fare pagina creazione progetto
 - fare pagina modifica progetto
-- modifica immagine profilo utente
+- verificare duplicazione email nel signup (try-catch?)
 
-## Feature secondarie
+## Meno importanti
 - cambiare immagini progetti
-- uniformare dimensioni immagini nelle card
-- centrare contenuto edit-profile.php
 - bloccare footer in basso
 - bloccare info utente da scroll nella pagina profilo
 - fixare colore sfondo input login/signup per l'autofill
@@ -45,3 +42,6 @@
 - inserire logo
 - cambiare link al navbar brand nelle pagine
 - centrare in basso pulsante 'edit' nel profilo
+- fare pagina creazione progetto
+- centrare contenuto edit-profile.php
+- uniformare dimensioni immagini nelle card

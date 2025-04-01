@@ -27,9 +27,9 @@
             } else {
                 echo "Error";
             }
+            $query->close();
         } else {
             $formMsg = 'Password must be at least 8 characters long.';
         }
     }
-    $query->close();
 ?>

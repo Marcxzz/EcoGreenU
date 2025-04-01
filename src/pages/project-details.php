@@ -61,7 +61,7 @@
                 </div>
                 <div class="row g-3 w-75 mx-auto">
                     <div class="col-9">
-                        <img class="w-100 project-img" src="../assets/images/projects/proj-<?=$project["idProject"]?>.jpg" />
+                        <img class="w-100 project-img" src="../assets/images/projects/project-<?=$project["idProject"]?>.jpg" />
                     </div>
                     <div class="col-3">
                         <div class="border rounded-0 p-3">

@@ -71,7 +71,7 @@
                         <?php foreach($projects as $p): ?>
                             <div class="col">
                                 <div class="card rounded-0">
-                                    <img src="../assets/images/projects/proj-<?=$p["idProject"]?>.jpg" class="card-img-top" alt="<?=$p["title"]?>">
+                                    <img src="../assets/images/projects/project-<?=$p["idProject"]?>.jpg" class="card-img-top" alt="<?=$p["title"]?>">
                                     <div class="card-body h-100 d-flex flex-column">
                                         <h5 class="card-title"><?=$p["title"]?></h5>
                                         <p class="card-text m-0"><?=$p["description"]?></p>

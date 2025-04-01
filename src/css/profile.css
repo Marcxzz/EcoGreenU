@@ -1,12 +1,9 @@
-.form-floating, #loginBtn, #signupBtn{
-    width: 450px;
-    max-width: 450px;
+form, .form-floating, #loginBtn, #signupBtn{
+    width: 100% !important;
+    max-width: 450px !important;
 }
-@media screen and (max-width: 482) {
+/* @media screen and (min-width: 482) {
     #main{
         display: block;
     }
-    form, .form-floating, #loginBtn{
-        width: 100% !important;
-    }
-}
+} */

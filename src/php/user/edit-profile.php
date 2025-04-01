@@ -32,6 +32,8 @@
 <!-- CHANGE PASSWORD -->
 <?php
     $pwFormMsg = '';
+    $changesAppliedMsg = '';
+
     if (isset($_POST['changePassword'])) {
         $db = new mysqli("localhost", "root", "", "dbecogreenu");
         if ($db->connect_error) {
@@ -56,6 +58,7 @@
             
             if ($query->execute()) {
                 $pwFormMsg = "Password changed successfully!";
+                $changesAppliedMsg = "Password changed successfully!";
             } else {
                 $pwFormMsg = "Error updating password.";
             }
@@ -68,6 +71,8 @@
 
 <!-- SAVE CHANGES -->
 <?php
+    $changesAppliedMsg = '';
+
     if (isset($_POST['editProfile'])) {
         $db = new mysqli("localhost", "root", "", "dbecogreenu");
         if ($db->connect_error) {
@@ -78,13 +83,14 @@
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $email = $_POST['email'] != $user['email'] ? $_POST['email'] : $user['email'];
-        $phoneNumber = $_POST['phoneNumber'] || NULL;
+        $phoneNumber = !empty($_POST['phoneNumber']) ? $_POST['phoneNumber'] : NULL;
 
         $query = $db->prepare("UPDATE tblusers SET firstName = ?, lastName = ?, email = ?, phoneNumber = ? WHERE idUser = ?");
         $query->bind_param("ssssi", $firstName, $lastName, $email, $phoneNumber, $userId);
         $query->execute();
+        $changesAppliedMsg = 'Changes applied successfully!';
         
-        header('location: edit-profile.php');
+        // header('location: edit-profile.php');
         $query->close();
     }
 ?>

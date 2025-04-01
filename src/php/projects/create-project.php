@@ -1,52 +1,79 @@
 <?php
-    ini_set('display_errors', 0);
+    session_start();
+    $projectId = null;
 
-    // Directory dove salvare le immagini
-    $targetDir = "../assets/images/projects/";
-    if (!file_exists($targetDir)) {
-        mkdir($targetDir, 0777, true); // Crea la cartella se non esiste
+    $db = new mysqli("localhost", "root", "", "dbecogreenu");
+    if ($db->connect_error) {
+        exit("error during db connection");
     }
 
-    $targetFile = $targetDir . basename($_FILES["thumbnail"]["name"]); // Percorso completo del file
-    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION)); // Estensione file
-    $uploadOk = 1;
-
-    // Controlla se il file è un'immagine reale
-    if (isset($_POST["createProject"])) {
-        $check = getimagesize($_FILES["thumbnail"]["tmp_name"]);
-        if ($check !== false) {
-            echo "Il file è un'immagine - " . $check["mime"] . ".";
-        } else {
-            echo "Il file non è un'immagine.";
-            $uploadOk = 0;
-        }
+    if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == null) {
+        header('location: ../pages/login.php');
     }
 
-    // Controlla la dimensione del file (max 5MB)
-    if ($_FILES["thumbnail"]["size"] > (5 * 1024 * 1024)) {
-        echo "Il file è troppo grande (max 5MB).";
-        $uploadOk = 0;
+    if (isset($_POST['createProject'])) {
+        if (!empty($_FILES['thumbnail']) && isset($_POST["title"]) && isset($_POST['description']) && isset($_POST['targetAmount']) && isset($_POST['deadline'])) {
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $targetAmount = $_POST['targetAmount'];
+            $deadline = formatDate($_POST['deadline'], 'Y-m-d H:i:s');
+
+            $query = $db->prepare("INSERT INTO tblprojects (title, description, targetAmount, deadline, fundraiser, status) VALUES (?, ?, ?, ?, ?, 0)");
+            $query->bind_param("ssdsi", $title, $description, $targetAmount, $deadline, $_SESSION['user_id']);
+            $query->execute();
+            
+            $projectId = $query->insert_id;
+            $query->close();
+            $db->close();
+        } else echo 'error: some fields are not compiled';
     }
 
-    // Consenti solo JPG e PNG
-    if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
-        echo "Sono ammessi solo file JPG, JPEG, PNG.";
-        $uploadOk = 0;
+    function formatDate($date, $format){
+        $datetime = new DateTime($date);
+        return $datetime->format($format);
     }
+?>
 
-    // Verifica se il file esiste già e rinomina se necessario
-    $counter = 1;
-    while (file_exists($targetFile)) {
-        $targetFile = $targetDir . pathinfo($_FILES["thumbnail"]["name"], PATHINFO_FILENAME) . "_$counter." . $imageFileType;
-        $counter++;
-    }
+<?php
+    // // ini_set('display_errors', 0);
 
-    // Se tutto è ok, sposta il file
-    if ($uploadOk == 1) {
-        if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile)) {
-            echo "L'immagine " . htmlspecialchars(basename($targetFile)) . " è stata caricata con successo.";
-        } else {
-            echo "Errore nel caricamento del file.";
-        }
-    }
+    // // Configurazione: cartella di destinazione
+    // $targetDir = "../assets/images/projects/";
+    // if (!file_exists($targetDir)) {
+    //     mkdir($targetDir, 0777, true);
+    // }
+
+    // // Recupera l'ID del progetto
+    // if (!isset($_POST["project_id"]) || empty($_POST["project_id"])) {
+    //     die("Errore: missing project ID.");
+    // }
+
+    // $projectId = preg_replace("/[^0-9]/", "", $_POST["project_id"]); // Sanitizza l'ID
+    // $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+
+    // $allowedTypes = ["jpg", "jpeg", "png"];
+    // if (!in_array($imageFileType, $allowedTypes)) {
+    //     die("Error: only JPG, JPEG and PNG images are allowed.");
+    // }
+
+    // // Imposta il nome del file come "IDprogetto.estensione"
+    // $targetFile = $targetDir . $projectId . "." . $imageFileType;
+
+    // // Controlla se esiste già un'immagine per il progetto
+    // if (file_exists($targetFile)) {
+    //     die("Error: an image already exists for this project.");
+    // }
+
+    // // Verifica se il file è effettivamente un'immagine
+    // $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    // if ($check === false) {
+    //     die("Error: uploaded file is not an image.");
+    // }
+
+    // // Sposta il file nella cartella
+    // if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
+    //     echo "Image successfully loaded for project " . $projectId;
+    // } else {
+    //     echo "Error: uploading failed.";
+    // }
 ?>

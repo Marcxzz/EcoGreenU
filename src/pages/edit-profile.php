@@ -46,40 +46,37 @@
             </div>
         </nav>
 
-        <div class="container-fluid p-0 m-0" id="main">
-            <div class="d-flex flex-column justify-content-center align-items-center">
-                <img src="../assets/images/pfp-default.jpg" width="200" class="rounded-circle mb-4" alt="User profile picture">
-                <form action="edit-profile.php" method="POST">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" value="<?=$user['firstName']?>">
-                        <label for="floatingFirstName">First name</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" value="<?=$user['lastName']?>">
-                        <label for="floatingLastName">Last name</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" value="<?=$user['email']?>">
-                        <label for="floatingEmail">Email address</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="tel" class="form-control rounded-0 focus-ring focus-ring-success" name="phoneNumber" id="floatingPhoneNumber" placeholder="name@example.com" value="<?=$user['phoneNumber']?>">
-                        <label for="floatingPhoneNumber">Phone number</label>
-                    </div>
-                    <!-- <div class="form-floating mb-3">
-                        <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                    </div> -->
-                    <button type="button" class="btn text-secondary w-100 rounded-0" name="editProfile" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Edit password</button>
-                    <button type="submit" class="btn btn-success w-100 rounded-0 mt-5" id="loginBtn" name="editProfile">Save changes</button>
-                    <!-- <button type="button" class="btn btn-success w-100 rounded-0" id="loginBtn" data-bs-toggle="modal" data-bs-target="#saveChangesModal">Save changes</button> -->
-                    <!-- <button type="submit" class="btn text-danger rounded-0 w-100 mt-3" name="deleteUser">Delete profile</button> -->
-                    <button type="button" class="btn text-danger rounded-0 w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">Delete profile</button>
-                    <?php
-                        echo '<p class="text-danger text-center my-3">'.$form_error_msg.'</p>';
-                    ?>
-                </form>
-            </div>
+        <div class="container-fluid p-3 m-0 vh-100 w-100 d-flex flex-column justify-content-center align-items-center" id="main">
+            <img src="../assets/images/pfp-default.jpg" width="200" class="rounded-circle mb-4" alt="User profile picture">
+            <form action="edit-profile.php" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" value="<?=$user['firstName']?>">
+                    <label for="floatingFirstName">First name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" value="<?=$user['lastName']?>">
+                    <label for="floatingLastName">Last name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" value="<?=$user['email']?>">
+                    <label for="floatingEmail">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control rounded-0 focus-ring focus-ring-success" name="phoneNumber" id="floatingPhoneNumber" placeholder="name@example.com" value="<?=$user['phoneNumber']?>">
+                    <label for="floatingPhoneNumber">Phone number</label>
+                </div>
+                <!-- <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div> -->
+                <button type="button" class="btn text-secondary w-100 rounded-0" name="editProfile" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Edit password</button>
+                <button type="submit" class="btn btn-success w-100 rounded-0 mt-5" id="loginBtn" name="editProfile">Save changes</button>
+                <p class="text-danger text-center my-3"><?=$form_error_msg?></p>
+                <p class="text-success text-center my-3"><?=$changesAppliedMsg?></p>
+                <!-- <button type="button" class="btn btn-success w-100 rounded-0" id="loginBtn" data-bs-toggle="modal" data-bs-target="#saveChangesModal">Save changes</button> -->
+                <!-- <button type="submit" class="btn text-danger rounded-0 w-100 mt-3" name="deleteUser">Delete profile</button> -->
+                <button type="button" class="btn text-danger rounded-0 w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">Delete profile</button>
+            </form>
         </div>
 
 
