@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS tblpaymentmethods (
   idPaymentMethod INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name CHAR(50) NOT NULL
 );
-INSERT INTO tblpaymentmethods (idPaymentMethod name) VALUES
+INSERT INTO tblpaymentmethods (idPaymentMethod, name) VALUES
 (1, 'Bank transfer'),
 (2, 'VISA'),
 (3, 'MasterCard'),

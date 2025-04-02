@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="../js/darkmode.js" defer></script>
+    <script type="text/javascript" src="../js/search-projects.js"></script>
     <title>Projects | EcoGreenU</title>
 </head>
 <body>
@@ -48,7 +49,17 @@
         <div class="container-fluid p-0 m-0" id="main">
             
             <div class="container-fluid p-3">
-                <h3 class="mb-3">Explore projects</h3>
+                <div class="row mb-3">
+                    <div class="col">
+                        <h3 class="mb-3">Explore projects</h3>
+                    </div>
+                    <div class="col-12 col-sm-5 col-md-6 col-lg-4 col-xl-3">
+                        <div class="searchbar">
+                            <input type="text" class="form-control focus-ring focus-ring-success rounded-0" placeholder="Search for projects..." id="query">
+                            <div id="results"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3">
                     <?php foreach ($projects as $p): ?>
                         <div class="col">

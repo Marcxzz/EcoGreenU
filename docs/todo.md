@@ -6,7 +6,7 @@
     - [ ] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
 - [x] evitare sql injection
 - [x] dark mode
-- [ ] ricerca dinamica progetti
+- [x] ricerca dinamica progetti
 - [ ] 100% responsive
 - [ ] report scelte progettuali
 - [x] file .sql con create table
