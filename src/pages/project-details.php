@@ -47,46 +47,50 @@
 
         <div class="container-fluid p-3 m-0" id="main">
             <?php if(isset($project)): ?>
-                <?php
-                    // print_r($donations);
-                ?>
-            
-                <div class="d-flex flex-row align-items-center justify-content-start gap-4 mt-4 mb-3 w-75 mx-auto px-2">
-                    <h2><?=$project['title']?></h2>
-                    <?php if($project['status'] == 1): ?>
-                        <span class="badge badge-outlined rounded-pill text-success fs-6">Under review</span>
-                    <?php elseif($project['status'] == 2): ?>
-                        <span class="badge rounded-pill text-bg-danger fs-6">Closed</span>
-                    <?php endif; ?>
-                </div>
-                <div class="row g-3 w-75 mx-auto">
-                    <div class="col-9">
-                        <img class="w-100 project-img" src="../assets/images/projects/project-<?=$project["idProject"]?>.jpg" />
+                <div class="row g-3 w-75 mx-auto" id="projectBody">
+                    <div class="col-12 d-flex flex-row align-items-center justify-content-start gap-4 w-100 mt-3 mt-sm-5">
+                        <h2><?=$project['title']?></h2>
+                        <?php if($project['status'] == 1): ?>
+                            <span class="badge badge-outlined rounded-pill text-success fs-6">Under review</span>
+                        <?php elseif($project['status'] == 2): ?>
+                            <span class="badge rounded-pill text-bg-danger fs-6">Closed</span>
+                        <?php endif; ?>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-xl-9">
+                        <img class="w-100 project-img" src="../assets/images/projects/project-<?=$project["idProject"]?>.jpg" />
+                        <h4 class="mt-5">Description</h4>
+                        <p class="mb-4"><?=$project['description']?></p>
+                    </div>
+                    <div class="col-12 col-xl-3">
                         <div class="border rounded-0 p-3">
-                            <h3 class="text-success">&lt;total raised&gt; $</h3>
+                            <h3 class="text-success"><?=number_format($raisedAmount, 2)?> $</h3>
                             <h5 class="mb-3">Goal: <?=number_format($project['targetAmount'], 2)?> $</h5>
                             <p class="m-0">Before: <?=formatDate($project['deadline'], 'd/m/Y H:i:s')?></p>
-                            <p class="m-0"><?=count($donations)?> donations</p>
-                            <!-- <hr>
-                            <p class="m-0"><?=$project['description']?></p> -->
-                            <?php if($project['status'] == 0): ?>
-                                <?php if(isset($_SESSION['user_id'])): ?>
-                                    <button type="button" class="btn btn-success w-100 rounded-0 mt-3">Donate</button>
-                                <?php else: ?>
-                                    <button class="btn btn-success w-100 rounded-0 mt-3" disabled>You must be logged in to donate</button>
+                            <div class="row g-3 mt-0">
+                                <?php if($project['status'] == 0): ?>
+                                    <?php if(isset($_SESSION['user_id'])): ?>
+                                        <div class="col col-xl-12">
+                                            <button type="button" class="btn btn-success w-100 rounded-0">Donate</button>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="col col-xl-12">
+                                            <a href="login.php" class="btn btn-success w-100 rounded-0">You must be logged in to donate</a>
+                                        </div>
+                                    <?php endif; ?>
                                 <?php endif; ?>
-                            <?php endif; ?>
-                            <?php if($owner): ?>
-                                <button type="button" class="btn btn-outline-success w-100 rounded-0 mt-3">Edit project</button>
-                            <?php endif; ?>
+                                <?php if($owner): ?>
+                                    <div class="col col-xl-12">
+                                        <button type="button" class="btn btn-outline-success w-100 rounded-0">Edit project</button>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                         <div class="border rounded-0 p-3 mt-3">
                             <h4>Recent donations</h4>
+                            <!-- <p class="m-0"><?=count($donations)?> total donations</p> -->
                             <div class="d-flex flex-column gap-4 mt-3">
                                 <?php foreach($donations as $d): ?>
-                                    <div class="d-flex gap-3 align-items-center">
+                                    <div class="d-flex gap-3 align-items-center justify-content-start">
                                         <img src="../assets/images/pfp-default.jpg" width=32 height=32 alt="" class="rounded-circle">
                                         <div class="d-flex flex-column">
                                             <?php if ($d['public']): ?>
@@ -95,8 +99,8 @@
                                                 <p class="m-0">Anonymous</p>
                                             <?php endif; ?>
                                             <p class="m-0 fw-bold"><?=$d['amount']?>$</p>
+                                            <p class="m-0 text-secondary"><?=formatDate($d['date'], 'd/m/Y')?></p>
                                         </div>
-                                        <p class="m-0 text-secondary ms-auto"><?=formatDate($d['date'], 'd/m/Y')?></p>
                                     </div>
                                     <!-- <hr> -->
                                 <?php endforeach; ?>

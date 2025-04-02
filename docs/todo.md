@@ -1,30 +1,28 @@
 # Requisiti
 - [x] permettere cancellazione account utente
 - [ ] permettere inserimento/modifica/cancellazione contenuti (immagini progetti)
-    - [ ] rinominare immagine
-    - [ ] salvare immagine in cartella
-    - [ ] ? anteprima immagine
+    - [ ] aggiunta progetto
+    - [ ] modifica progetto
+    - [ ] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
 - [x] evitare sql injection
 - [x] dark mode
+- [ ] ricerca dinamica progetti
 - [ ] 100% responsive
-- [ ] ricerca dinamica progetti (ajax?)
 - [ ] report scelte progettuali
 - [x] file .sql con create table
 
 
 # To-do
 ## Importanti
-- finire pagina dettagli progetto
-- fare pagina modifica progetto
 - verificare duplicazione email nel signup (try-catch?)
 
 ## Meno importanti
-- cambiare immagini progetti
-- bloccare footer in basso
+- aggiungere favicon
+- riorganizzare css
 - bloccare info utente da scroll nella pagina profilo
+- ? filtrare progetti
 - fixare colore sfondo input login/signup per l'autofill
 - ? aggiungere validation bootstrap ai forms
-- ? filtrare progetti
 
 ## Non funzionano
 - mettere un dropdown nella navbar per il profilo
@@ -45,3 +43,4 @@
 - fare pagina creazione progetto
 - centrare contenuto edit-profile.php
 - uniformare dimensioni immagini nelle card
+- finire pagina dettagli progetto

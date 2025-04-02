@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $formMsg = '';
     $db = new mysqli("localhost", "root", "", "dbecogreenu");
     if ($db->connect_error) {
@@ -23,6 +24,7 @@
             // $result = $db->query("INSERT INTO tblusers (firstName, lastName, email, passwordHash) VALUES ('$firstName', '$lastName', '$email', '$password_hash')");
             
             if (!$result) {
+                $_SESSION['user_id'] = $query->insert_id;
                 header('location: profile.php');
             } else {
                 echo "Error";

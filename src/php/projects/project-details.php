@@ -4,6 +4,7 @@
     $project;
     $donations = [];
     $owner = false;
+    $raisedAmount;
 
     if (isset($_GET['project-id'])) {
         $project_id = $_GET['project-id'];
@@ -14,10 +15,11 @@
         }
 
         $result = $db->query("SELECT * FROM tblprojects WHERE idProject = $project_id");
+
         if ($result->num_rows > 0) {
             $project = $result->fetch_assoc();
             $owner = isset($_SESSION['user_id']) && $_SESSION['user_id'] == $project['fundraiser'] ? true : false;
-
+    
             $result = $db->query("SELECT tblpayments.*,
                                          tblusers.firstName,
                                          tblusers.lastName
@@ -26,12 +28,20 @@
                                 INNER JOIN tblusers ON tblpayments.userid = tblusers.idUser
                                    WHERE idProject = $project_id");
             
-            if ($result == false) {
-                echo 'no donations for this project';
-            } else {
+            if ($result) {
                 while ($row = $result->fetch_assoc()) {
                     array_push($donations, $row);
                 }
+            } else {
+                echo 'no donations for this project';
+            }
+
+
+            $result = $db->query("SELECT SUM(tblpayments.amount) AS raisedAmount FROM tblpayments WHERE projectId = $project_id");
+            if ($result) {
+                $raisedAmount = $result->fetch_assoc()['raisedAmount'];
+            } else {
+                echo 'no donations for this project';
             }
         } else {
             echo 'no project found with this ID';

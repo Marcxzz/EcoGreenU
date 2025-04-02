@@ -47,21 +47,21 @@
             <div class="w-50 mx-auto" id="aboutUs">
                 <section class="mt-2 mb-5">
                     <h2>About <span class="highlight fw-bold">Us</span></h2>
-                    <img src="../assets/images/about-us/about.jpg" alt="EcoGreenU" class="w-100 my-2">
+                    <img src="../assets/images/about-us/about.jpg" alt="EcoGreenU" class="w-100 my-2 mb-3">
                     <p>EcoGreenU is a crowdfunding platform established with the goal of supporting innovative and sustainable projects. We believe that <b>change starts with ideas</b> and that these need support to become reality. We connect creators of green projects with investors and people interested in helping to build a <b>greener future</b>.</p>
                     <p>Our platform enables startups, companies and researchers to gain visibility and funding for projects focused on environmental sustainability. We believe in the <b>power of collaboration</b> and the strength of community to address global challenges related to climate change.</p>
                 </section>
                 
                 <section class="mb-5">
                     <h2>Our <span class="highlight fw-bold">Mission</span></h2>
-                    <img src="../assets/images/about-us/mission.jpg" alt="EcoGreenU mission" class="w-100 my-2">
+                    <img src="../assets/images/about-us/mission.jpg" alt="EcoGreenU mission" class="w-100 my-2 mb-3">
                     <p>Our mission is to <b>promote innovation</b> in the environmental sector by providing practical support for those with revolutionary ideas to reduce environmental impact and improve the quality of life on the planet.</p>
                     <p>EcoGreenU is committed to ensuring that every project on the platform meets strict criteria for sustainability and innovation. We want to be the meeting point between those who have an idea and those who wish to support it, so that every small step can lead to big change.</p>
                 </section>
                 
                 <section class="">
                     <h2>Our <span class="highlight fw-bold">Vision</span></h2>
-                    <img src="../assets/images/about-us/vision.jpg" alt="EcoGreenU vision" class="w-100 my-2">
+                    <img src="../assets/images/about-us/vision.jpg" alt="EcoGreenU vision" class="w-100 my-2 mb-3">
                     <p>Our dream is a world where technology and sustainability come together to create a <b>healthier and safer environment</b> for all. Over the next few years, we want to expand EcoGreenU globally, becoming the <b></b> for green projects.</p>
                     <p>Our commitment is to <b>build a network</b> of supporters, investors, and innovators ready to <b>collaborate to realize sustainable solutions</b> in various fields, from renewable energy to waste management, from sustainable agriculture to biodiversity conservation.</p>
                 </section>

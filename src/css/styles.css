@@ -150,3 +150,10 @@ input.form-control:focus{
 .badge.badge-outlined {
     background-color: transparent !important;
 }
+
+@media screen and (max-width: 600px) {
+    #projectBody{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}

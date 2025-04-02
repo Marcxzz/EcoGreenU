@@ -49,7 +49,6 @@
         <div class="container-fluid p-3 m-0" id="main">
             <div class="d-flex flex-column justify-content-center align-items-center vh-100">
                 <form action="create-project.php" method="post" enctype="multipart/form-data">
-                    <img src="" alt=""> <!-- thumbnail preview -->
                     <input type="file" class="form-control rounded-0 focus-ring focus-ring-success mb-3" name="thumbnail" id="floatingImg" accept=".jpg,.png,.jpeg">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="title" id="floatingTitle" placeholder="My new green project">
