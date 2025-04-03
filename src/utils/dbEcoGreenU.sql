@@ -32,20 +32,21 @@ INSERT INTO tblusers (idUser, firstName, lastName, email, phoneNumber, passwordH
 
 CREATE TABLE IF NOT EXISTS tblprojects (
   idProject INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  title CHAR(30) NOT NULL,
+  title CHAR(30) NOT NULL UNIQUE,
   description CHAR(250) NOT NULL,
+  img CHAR(20),
   fundraiser INT NOT NULL,
   targetAmount DECIMAL(10,2) NOT NULL,
   deadline DATETIME NOT NULL,
   status CHAR(1) NOT NULL,
     FOREIGN KEY (fundraiser) REFERENCES tblusers(iduser)
 );
-INSERT INTO tblprojects (idProject, title, description, fundraiser, targetAmount, deadline, status) VALUES
-(1, 'Forest Restoration Initiative', 'Reforestation project to restore degraded areas and promote biodiversity.', 1, 50000, '2025-12-31 23:59:59', '0'),
-(2, 'Solar Energy for Rural Areas', 'Project to install solar panels in rural areas, improving access to renewable energy.', 2, 150000, '2025-06-30 23:59:59', '1'),
-(3, 'Recycling for a Better Future', 'Establishment of a recycling plant to reduce plastic pollution in cities.', 1, 30000, '2025-09-15 23:59:59', '0'),
-(4, 'Sustainable Urban Agriculture', 'Urban agriculture project using environmentally sustainable farming techniques to feed cities.', 3, 70000, '2025-08-01 23:59:59', '2'),
-(5, 'Clean Oceans Campaign', 'Project to clean the seas and oceans with the help of environmentally friendly technologies for waste collection.', 3, 200000, '2025-10-15 23:59:59', '0');
+INSERT INTO tblprojects (idProject, title, description, img,  fundraiser, targetAmount, deadline, status) VALUES
+(1, 'Forest Restoration Initiative', 'Reforestation project to restore degraded areas and promote biodiversity.', 'project-1.jpg', 1, 50000, '2025-12-31 23:59:59', '0'),
+(2, 'Solar Energy for Rural Areas', 'Project to install solar panels in rural areas, improving access to renewable energy.', 'project-2.jpg', 2, 150000, '2025-06-30 23:59:59', '1'),
+(3, 'Recycling for a Better Future', 'Establishment of a recycling plant to reduce plastic pollution in cities.', 'project-3.jpg', 1, 30000, '2025-09-15 23:59:59', '0'),
+(4, 'Sustainable Urban Agriculture', 'Urban agriculture project using environmentally sustainable farming techniques to feed cities.', 'project-4.jpg', 3, 70000, '2025-08-01 23:59:59', '2'),
+(5, 'Clean Oceans Campaign', 'Project to clean the seas and oceans with the help of environmentally friendly technologies for waste collection.', 'project-5.jpg', 3, 200000, '2025-10-15 23:59:59', '0');
 
 
 CREATE TABLE IF NOT EXISTS tblPayments (

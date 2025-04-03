@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="../js/darkmode.js" defer></script>
+    <link rel="icon" href="../assets/logo/favicon-light.svg" sizes="any" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../assets/logo/favicon-dark.svg" sizes="any" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <title>Profile | EcoGreenU</title>
 </head>
 <body>
@@ -71,7 +73,11 @@
                         <?php foreach($projects as $p): ?>
                             <div class="col">
                                 <div class="card rounded-0">
-                                    <img src="../assets/images/projects/project-<?=$p["idProject"]?>.jpg" class="card-img-top" alt="<?=$p["title"]?>">
+                                    <?php if(!isset($p["img"])): ?>
+                                        <img src="../assets/images/proj-thumbnail-default.jpg" class="card-img-top" alt="<?=$p["title"]?>">
+                                    <?php else: ?>
+                                        <img src="../assets/images/projects/<?=$p["img"]?>" class="card-img-top" alt="<?=$p["title"]?>">
+                                    <?php endif; ?>
                                     <div class="card-body h-100 d-flex flex-column">
                                         <h5 class="card-title"><?=$p["title"]?></h5>
                                         <p class="card-text m-0"><?=$p["description"]?></p>

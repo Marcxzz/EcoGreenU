@@ -1,10 +1,12 @@
 <?php
     session_start();
     $projectId = null;
+    $errorMsg = ''; // messaggio di errore nel form
+    $infoMsg = '';
 
     $db = new mysqli("localhost", "root", "", "dbecogreenu");
     if ($db->connect_error) {
-        exit("error during db connection");
+        exit("Error during db connection.");
     }
 
     if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == null) {
@@ -12,21 +14,32 @@
     }
 
     if (isset($_POST['createProject'])) {
-        // controlla se tutti i campi sono compilati e validi
-        if (!empty($_FILES['thumbnail']) && isset($_POST["title"]) && isset($_POST['description']) && isset($_POST['targetAmount']) && isRealDate($_POST['deadline'])) {
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $targetAmount = $_POST['targetAmount'];
-            $deadline = formatDate($_POST['deadline'], 'Y-m-d H:i:s');
+        // il controllo viene saltato perchè c'è la flag 'required' negli input html
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $targetAmount = $_POST['targetAmount'];
+        $deadline = formatDate($_POST['deadline'], 'Y-m-d H:i:s');
 
-            $query = $db->prepare("INSERT INTO tblprojects (title, description, targetAmount, deadline, fundraiser, status) VALUES (?, ?, ?, ?, ?, 0)");
-            $query->bind_param("ssdsi", $title, $description, $targetAmount, $deadline, $_SESSION['user_id']);
+        $query = $db->prepare("INSERT INTO tblprojects (title, description, targetAmount, deadline, fundraiser, status) VALUES (?, ?, ?, ?, ?, 0)");
+        $query->bind_param("ssdsi", $title, $description, $targetAmount, $deadline, $_SESSION['user_id']);
+
+        try {
             $query->execute();
-            
             $projectId = $query->insert_id;
             $query->close();
             $db->close();
-        } else echo 'error: some fields are not compiled';
+            $infoMsg = "Project added successfully! with ID $projectId";
+            saveProjectThumbnail($projectId);
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1062) { // codice errore per violazione dell vincolo UNIQUE
+                $errorMsg = "Error: a project already exists with this title.";
+            } else {
+                $errorMsg = "Error during project creation: " . $e->getMessage();
+            }
+        }
+        // controlla se tutti i campi sono compilati e validi
+        // if (!empty($_FILES['thumbnail']) && isset($_POST["title"]) && isset($_POST['description']) && isset($_POST['targetAmount']) && isRealDate($_POST['deadline'])) {
+        // } else echo 'error: some fields are not compiled';
     }
 
     function formatDate($date, $format){
@@ -37,48 +50,36 @@
     function isRealDate($date) { 
         return strtotime($date) === false ? false : true;
     }
-?>
 
-<?php
-    // // ini_set('display_errors', 0);
-
-    // // Configurazione: cartella di destinazione
-    // $targetDir = "../assets/images/projects/";
-    // if (!file_exists($targetDir)) {
-    //     mkdir($targetDir, 0777, true);
-    // }
-
-    // // Recupera l'ID del progetto
-    // if (!isset($_POST["project_id"]) || empty($_POST["project_id"])) {
-    //     die("Errore: missing project ID.");
-    // }
-
-    // $projectId = preg_replace("/[^0-9]/", "", $_POST["project_id"]); // Sanitizza l'ID
-    // $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
-
-    // $allowedTypes = ["jpg", "jpeg", "png"];
-    // if (!in_array($imageFileType, $allowedTypes)) {
-    //     die("Error: only JPG, JPEG and PNG images are allowed.");
-    // }
-
-    // // Imposta il nome del file come "IDprogetto.estensione"
-    // $targetFile = $targetDir . $projectId . "." . $imageFileType;
-
-    // // Controlla se esiste già un'immagine per il progetto
-    // if (file_exists($targetFile)) {
-    //     die("Error: an image already exists for this project.");
-    // }
-
-    // // Verifica se il file è effettivamente un'immagine
-    // $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    // if ($check === false) {
-    //     die("Error: uploaded file is not an image.");
-    // }
-
-    // // Sposta il file nella cartella
-    // if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
-    //     echo "Image successfully loaded for project " . $projectId;
-    // } else {
-    //     echo "Error: uploading failed.";
-    // }
+    // ini_set('display_errors', 0);
+    function saveProjectThumbnail($projectId){
+        global $infoMsg, $errorMsg;
+        // $infoMsg = $infoMsg . "\r\nmiao";
+        $targetDir = "../assets/images/projects"; // cartella di destinazione
+        if (!file_exists($targetDir)) // se il percorso non esiste l crea
+            mkdir($targetDir, 0777, true);
+    
+        if (!$projectId) // se l'id del progetto non è settato esce
+            die("Error: missing project ID.");
+    
+        $imageFileType = strtolower(pathinfo($_FILES["thumbnail"]["name"], PATHINFO_EXTENSION));
+    
+        $allowedTypes = ["jpg", "jpeg", "png"];
+        if (!in_array($imageFileType, $allowedTypes)) // controlla se il formato dell'immagine inserita rientra tra quelli ammessi
+            $errorMsg ="Error: only JPG, JPEG and PNG images are allowed.";
+    
+        $targetFile = $targetDir . "/project-" . $projectId . "." . $imageFileType; // nome file = path/project-ID.estensione
+    
+        if (file_exists($targetFile)) // controlla se esiste già un'immagine per il progetto
+            $errorMsg = "Error: an image already exists for this project.";
+    
+        $check = getimagesize($_FILES["thumbnail"]["tmp_name"]);
+        if ($check === false) // verifica se il file è realmente un'immagine (e non un altro file spacciato come foto)
+            $errorMsg = "Error: uploaded file is not an image.";
+    
+        if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile)) // sposta il file nella cartella
+            $infoMsg = $infoMsg . "Image successfully loaded for project " . $projectId;
+        else
+            $errorMsg = "Error: uploading failed.";
+    }
 ?>

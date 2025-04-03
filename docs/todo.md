@@ -1,9 +1,10 @@
 # Requisiti
 - [x] permettere cancellazione account utente
-- [ ] permettere inserimento/modifica/cancellazione contenuti (immagini progetti)
-    - [ ] aggiunta progetto
+- [ ] permettere inserimento/modifica/cancellazione contenuti (progetti)
+    - [x] aggiunta progetto
     - [ ] modifica progetto
     - [ ] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
+    - [ ] chiusura manuale progetto
 - [x] evitare sql injection
 - [x] dark mode
 - [x] ricerca dinamica progetti
@@ -14,10 +15,10 @@
 
 # To-do
 ## Importanti
-- verificare duplicazione email nel signup (try-catch?)
+- aggiungere validazione input (min, max, minlength)
+- verificare duplicazione email nel signup (try-catch)
 
 ## Meno importanti
-- aggiungere favicon
 - riorganizzare css
 - bloccare info utente da scroll nella pagina profilo
 - ? filtrare progetti
@@ -44,3 +45,5 @@
 - centrare contenuto edit-profile.php
 - uniformare dimensioni immagini nelle card
 - finire pagina dettagli progetto
+- aggiungere favicon
+- visualizzare anche progetti con 0$

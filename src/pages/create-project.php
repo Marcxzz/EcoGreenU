@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="../js/darkmode.js" defer></script>
+    <link rel="icon" href="../assets/logo/favicon-light.svg" sizes="any" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../assets/logo/favicon-dark.svg" sizes="any" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <title>Create a new green project | EcoGreenU</title>
 </head>
 <body>
@@ -49,24 +51,26 @@
         <div class="container-fluid p-3 m-0" id="main">
             <div class="d-flex flex-column justify-content-center align-items-center vh-100">
                 <form action="create-project.php" method="post" enctype="multipart/form-data">
-                    <input type="file" class="form-control rounded-0 focus-ring focus-ring-success mb-3" name="thumbnail" id="floatingImg" accept=".jpg,.png,.jpeg">
+                    <input type="file" class="form-control rounded-0 focus-ring focus-ring-success mb-3" name="thumbnail" id="floatingImg" accept=".jpg,.png,.jpeg" required>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="title" id="floatingTitle" placeholder="My new green project">
+                        <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="title" id="floatingTitle" placeholder="My new green project" required>
                         <label for="floatingTitle">Project title</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" placeholder="Leave a comment here" id="floatingDescription" style="height:150px; max-height:300px;"></textarea>
+                        <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" placeholder="Leave a comment here" id="floatingDescription" style="height:150px; max-height:300px;" minlength="50" required></textarea>
                         <label for="floatingTexfloatingDescriptiontarea">Description</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control rounded-0 focus-ring focus-ring-success" name="targetAmount" id="floatingTarget" min="0" step="5000" value="10000" max="50000000">
-                        <label for="floatingTarget">Target amount</label>
+                        <input type="number" class="form-control rounded-0 focus-ring focus-ring-success" name="targetAmount" id="floatingTargetAmount" min="10000" step="5000" value="10000" max="50000000" required>
+                        <label for="floatingTargetAmount">Target amount</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="datetime-local" class="form-control rounded-0 focus-ring focus-ring-success" name="deadline" id="floatingDeadline">
+                        <input type="datetime-local" class="form-control rounded-0 focus-ring focus-ring-success" name="deadline" id="floatingDeadline" required>
                         <label for="floatingDeadline">Deadline</label>
                     </div>
                     <button type="submit" class="btn btn-success w-100 rounded-0" name="createProject">Create project</button>
+                    <p class="text-danger text-center my-3"><?=$errorMsg?></p>
+                    <p class="text-success text-center my-3"><?=$infoMsg?></p>
                 </form>
             </div>
         </div>

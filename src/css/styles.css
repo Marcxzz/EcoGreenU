@@ -137,10 +137,10 @@ input.form-control:focus{
     border-color: var(--primary-green) !important;
 }
 
-.project-img{
+/* .project-img{
     aspect-ratio: 16/9;
     object-fit: cover;
-}
+} */
 .card-img-top{
     aspect-ratio: 4/3;
     object-fit: cover;
@@ -160,38 +160,23 @@ input.form-control:focus{
     }
 }
 
-
-/* SEARCHBAR STYLE */
-.searchbar{
-    position: relative;
-    width: 100%;
+/* project creation page */
+input::file-selector-button{ /* changes input file button colors */
+    background-color: var(--primary-green) !important;
+    color: #fff !important;
 }
-#results {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-height: 168px;
-    z-index: 999;
-    padding: 4px;
-    background-color: var(--searchbar-results);
-    overflow-y: auto;
-    box-shadow: 0 0 5px 0 #000;
-    scrollbar-color: var(--bs-secondary-color) var(--searchbar-results) !important;
-}
-.searchbar #results .item {
-    padding: 4px 12px;
-    height: auto;
-    cursor: pointer;
-    line-height: auto;
-    word-break: normal;
-}
-.searchbar #results .item a{
+input #floatingTargetAmount::-webkit-inner-spin-button,
+input #floatingTargetAmount::-webkit-outer-spin-button{
+    background-color: var(--background-color) !important;
     color: var(--foreground-color) !important;
 }
-.searchbar #results .item:hover {
-    background-color: var(--background-color);
-}
-.searchbar #query:placeholder-shown + #results, #results:empty {
-    display: none;
+
+/* nelle card dei progetti, mostra solo le prime tre righe */
+p.card-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="../js/darkmode.js" defer></script>
+    <link rel="icon" href="../assets/logo/favicon-light.svg" sizes="any" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../assets/logo/favicon-dark.svg" sizes="any" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <title><?=$project['title'] ?> | EcoGreenU</title>
 </head>
 <body>
@@ -57,7 +59,11 @@
                         <?php endif; ?>
                     </div>
                     <div class="col-12 col-xl-9">
-                        <img class="w-100 project-img" src="../assets/images/projects/project-<?=$project["idProject"]?>.jpg" />
+                        <?php if(!isset($project["img"])): ?>
+                            <img src="../assets/images/proj-thumbnail-default.jpg" class="card-img-top" alt="<?=$project["title"]?>">
+                        <?php else: ?>
+                            <img src="../assets/images/projects/<?=$project["img"]?>" class="card-img-top" alt="<?=$project["title"]?>">
+                        <?php endif; ?>
                         <h4 class="mt-5">Description</h4>
                         <p class="mb-4"><?=$project['description']?></p>
                     </div>
@@ -88,23 +94,27 @@
                         <div class="border rounded-0 p-3 mt-3">
                             <h4>Recent donations</h4>
                             <!-- <p class="m-0"><?=count($donations)?> total donations</p> -->
-                            <div class="d-flex flex-column gap-4 mt-3">
-                                <?php foreach($donations as $d): ?>
-                                    <div class="d-flex gap-3 align-items-center justify-content-start">
-                                        <img src="../assets/images/pfp-default.jpg" width=32 height=32 alt="" class="rounded-circle">
-                                        <div class="d-flex flex-column">
-                                            <?php if ($d['public']): ?>
-                                                <p class="m-0"><?=$d['firstName']?> <?=$d['lastName']?></p>
-                                            <?php else: ?>
-                                                <p class="m-0">Anonymous</p>
-                                            <?php endif; ?>
-                                            <p class="m-0 fw-bold"><?=$d['amount']?>$</p>
-                                            <p class="m-0 text-secondary"><?=formatDate($d['date'], 'd/m/Y')?></p>
+                            <?php if($donations): ?>
+                                <div class="d-flex flex-column gap-4 mt-3">
+                                    <?php foreach($donations as $d): ?>
+                                        <div class="d-flex gap-3 align-items-center justify-content-start">
+                                            <img src="../assets/images/pfp-default.jpg" width=32 height=32 alt="" class="rounded-circle">
+                                            <div class="d-flex flex-column">
+                                                <?php if ($d['public']): ?>
+                                                    <p class="m-0"><?=$d['firstName']?> <?=$d['lastName']?></p>
+                                                <?php else: ?>
+                                                    <p class="m-0">Anonymous</p>
+                                                <?php endif; ?>
+                                                <p class="m-0 fw-bold"><?=$d['amount']?>$</p>
+                                                <p class="m-0 text-secondary"><?=formatDate($d['date'], 'd/m/Y')?></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- <hr> -->
-                                <?php endforeach; ?>
-                            </div>
+                                        <!-- <hr> -->
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <p class="text-secondary m-0">This project has no donation yet.</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
