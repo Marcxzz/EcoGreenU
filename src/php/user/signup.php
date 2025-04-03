@@ -7,7 +7,6 @@
     }
 
     if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST["email"]) && isset($_POST["password"])) {
-        // Prendi email e password dalla form
         $email = $_POST['email'];
         $password = $_POST['password'];
         $firstName = $_POST['firstName'];

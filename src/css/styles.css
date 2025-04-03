@@ -162,21 +162,29 @@ input.form-control:focus{
 
 
 /* SEARCHBAR STYLE */
-.searchbar #results {
-    background-color: var(--searchbar-results);
-    padding: 4px;
-    overflow-y: scroll;
-    max-height: 152px;
-    position: fixed;
+.searchbar{
+    position: relative;
+    width: 100%;
+}
+#results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 168px;
     z-index: 999;
+    padding: 4px;
+    background-color: var(--searchbar-results);
+    overflow-y: auto;
     box-shadow: 0 0 5px 0 #000;
     scrollbar-color: var(--bs-secondary-color) var(--searchbar-results) !important;
 }
 .searchbar #results .item {
-    padding: 0 12px;
-    height: 36px;
+    padding: 4px 12px;
+    height: auto;
     cursor: pointer;
-    line-height: 36px;
+    line-height: auto;
+    word-break: normal;
 }
 .searchbar #results .item a{
     color: var(--foreground-color) !important;
@@ -184,7 +192,6 @@ input.form-control:focus{
 .searchbar #results .item:hover {
     background-color: var(--background-color);
 }
-
 .searchbar #query:placeholder-shown + #results, #results:empty {
     display: none;
 }
