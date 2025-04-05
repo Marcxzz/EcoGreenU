@@ -85,12 +85,19 @@
                                             <hr>
                                             <div class="d-flex">
                                                 <p class="text-secondary">
-                                                    Deadline: <?=formatDate($p['deadline'], 'd/m/Y H:i:s')?>
+                                                    Deadline: <?=formatDate($p['deadline'], 'd/m/Y H:i')?>
                                                     <br>
                                                     Target: <?=number_format($p["targetAmount"], 2) ?>$
                                                 </p>
                                             </div>
-                                            <a href="project-details.php?project-id=<?=$p['idProject']?>&edit=true" class="btn btn-outline-success rounded-0 w-100">Edit</a>
+                                            <div class="row g-3">
+                                                <div class="col-12 col-md-6">
+                                                    <a href="project-details.php?id=<?=$p['idProject']?>" class="btn btn-success rounded-0 w-100">View</a>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <a href="edit-project.php?id=<?=$p['idProject']?>" class="btn btn-outline-success rounded-0 w-100">Edit</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +143,7 @@
                                 <?php foreach ($contibutions as $c): ?>
                                     <tr>
                                         <td>
-                                            <a href="project-details.php?project-id=<?=$c['projectId']?>" class="text-success"><?=$c["title"]?></a>
+                                            <a href="project-details.php?id=<?=$c['projectId']?>" class="text-success"><?=$c["title"]?></a>
                                             <?php if($c['public'] == 1): ?>
                                                 <span class="badge rounded-pill text-bg-success ms-2">Private</span>
                                             <?php endif; ?>
@@ -156,7 +163,5 @@
                 <?php endif; ?>
             </div>
         </div>
-
-        <?php // include '../shared/footer.php' ?>
     </div>
 </body>

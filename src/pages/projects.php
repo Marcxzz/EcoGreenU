@@ -87,14 +87,12 @@
                                     </li>
                                 </ul>
                                 <div class="card-body d-flex">
-                                    <form method="GET" action="project-details.php" class="ms-auto">
-                                        <!-- <?=print_r($_SESSION)?> -->
-                                        <?php if($p['status'] == 0 && isset($_SESSION['user_id'])): ?>
-                                            <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-success rounded-0 ms-auto">Donate</button>
-                                        <?php else: ?>
-                                            <button type="submit" name="project-id" value="<?=$p['idProject']?>" class="btn btn-outline-success rounded-0 ms-auto">View</button>
-                                        <?php endif; ?>
-                                    </form>
+                                    <!-- <?=print_r($_SESSION)?> -->
+                                    <?php if($p['status'] == 0 && isset($_SESSION['user_id'])): ?>
+                                        <a href="project-details.php?id=<?=$p['idProject'] ?>" class="btn btn-success rounded-0 ms-auto">Donate</a>
+                                    <?php else: ?>
+                                        <a href="project-details.php?id=<?=$p['idProject'] ?>" class="btn btn-outline-success rounded-0 ms-auto">View</a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -102,8 +100,6 @@
                 </div>
             </div>
         </div>
-
-        <?php // include '../shared/footer.php' ?>
     </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 - [x] permettere cancellazione account utente
 - [ ] permettere inserimento/modifica/cancellazione contenuti (progetti)
     - [x] aggiunta progetto
-    - [ ] modifica progetto
+    - [x] modifica progetto
     - [ ] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
     - [ ] chiusura manuale progetto
 - [x] evitare sql injection
@@ -15,11 +15,12 @@
 
 # To-do
 ## Importanti
-- aggiungere validazione input (min, max, minlength)
 - verificare duplicazione email nel signup (try-catch)
+- donare ai progetti
 
 ## Meno importanti
 - riorganizzare css
+- ? pulire codice?
 - bloccare info utente da scroll nella pagina profilo
 - ? filtrare progetti
 - fixare colore sfondo input login/signup per l'autofill
@@ -47,3 +48,4 @@
 - finire pagina dettagli progetto
 - aggiungere favicon
 - visualizzare anche progetti con 0$
+- aggiungere validazione input (min, max, minlength)

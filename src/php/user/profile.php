@@ -48,8 +48,8 @@
         header("location: login.php");
     }
 
-    function formatDate($date){
+    function formatDate($date, $format){
         $datetime = new DateTime($date);
-        return $datetime->format('d/m/Y H:i:s');
+        return $datetime->format($format);
     }
 ?>

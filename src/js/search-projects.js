@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
                 resultsHTML += (
                     `
                         <div class="item">
-                            <a href="../pages/project-details.php?project-id=${r.idProject}" class="link-underline link-underline-opacity-0">${r.title}</a>
+                            <a href="../pages/project-details.php?id=${r.idProject}" class="link-underline link-underline-opacity-0">${r.title}</a>
                         </div>
                     `
                 )

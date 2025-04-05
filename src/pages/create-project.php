@@ -53,15 +53,15 @@
                 <form action="create-project.php" method="post" enctype="multipart/form-data">
                     <input type="file" class="form-control rounded-0 focus-ring focus-ring-success mb-3" name="thumbnail" id="floatingImg" accept=".jpg,.png,.jpeg" required>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="title" id="floatingTitle" placeholder="My new green project" required>
+                        <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="title" id="floatingTitle" placeholder="My new green project" minlenght="5" maxlength="30" required>
                         <label for="floatingTitle">Project title</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" placeholder="Leave a comment here" id="floatingDescription" style="height:150px; max-height:300px;" minlength="50" required></textarea>
+                        <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" placeholder="Leave a comment here" id="floatingDescription" style="height:150px; max-height:300px;" minlength="50" maxlength="250" required></textarea>
                         <label for="floatingTexfloatingDescriptiontarea">Description</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control rounded-0 focus-ring focus-ring-success" name="targetAmount" id="floatingTargetAmount" min="10000" step="5000" value="10000" max="50000000" required>
+                        <input type="number" class="form-control rounded-0 focus-ring focus-ring-success" name="targetAmount" id="floatingTargetAmount" value="10000" min="1000" max="999999999" step="1000" required>
                         <label for="floatingTargetAmount">Target amount</label>
                     </div>
                     <div class="form-floating mb-3">

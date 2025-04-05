@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     $projectId = null;
     $errorMsg = ''; // messaggio di errore nel form
     $infoMsg = '';
@@ -14,11 +15,10 @@
     }
 
     if (isset($_POST['createProject'])) {
-        // il controllo viene saltato perchè c'è la flag 'required' negli input html
         $title = $_POST['title'];
         $description = $_POST['description'];
         $targetAmount = $_POST['targetAmount'];
-        $deadline = formatDate($_POST['deadline'], 'Y-m-d H:i:s');
+        $deadline = formatDate($_POST['deadline'], 'Y-m-d H:i');
 
         $query = $db->prepare("INSERT INTO tblprojects (title, description, targetAmount, deadline, fundraiser, status) VALUES (?, ?, ?, ?, ?, 0)");
         $query->bind_param("ssdsi", $title, $description, $targetAmount, $deadline, $_SESSION['user_id']);
@@ -31,15 +31,12 @@
             $infoMsg = "Project added successfully! with ID $projectId";
             saveProjectThumbnail($projectId);
         } catch (mysqli_sql_exception $e) {
-            if ($e->getCode() == 1062) { // codice errore per violazione dell vincolo UNIQUE
+            if ($e->getCode() == 1062) { // codice errore per violazionw del vincolo UNIQUe
                 $errorMsg = "Error: a project already exists with this title.";
             } else {
                 $errorMsg = "Error during project creation: " . $e->getMessage();
             }
         }
-        // controlla se tutti i campi sono compilati e validi
-        // if (!empty($_FILES['thumbnail']) && isset($_POST["title"]) && isset($_POST['description']) && isset($_POST['targetAmount']) && isRealDate($_POST['deadline'])) {
-        // } else echo 'error: some fields are not compiled';
     }
 
     function formatDate($date, $format){

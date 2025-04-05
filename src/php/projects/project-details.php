@@ -6,8 +6,8 @@
     $owner = false;
     $raisedAmount;
 
-    if (isset($_GET['project-id'])) {
-        $project_id = $_GET['project-id'];
+    if (isset($_GET['id'])) {
+        $project_id = $_GET['id'];
 
         $db = new mysqli("localhost", "root", "", "dbecogreenu");
         if ($db->connect_error) {

@@ -52,19 +52,19 @@
             <img src="../assets/images/pfp-default.jpg" width="200" class="rounded-circle mb-4" alt="User profile picture">
             <form action="edit-profile.php" method="POST">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" value="<?=$user['firstName']?>">
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" value="<?=$user['firstName']?>" maxlength="50" required>
                     <label for="floatingFirstName">First name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" value="<?=$user['lastName']?>">
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" value="<?=$user['lastName']?>" maxlength="50" required>
                     <label for="floatingLastName">Last name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" value="<?=$user['email']?>">
+                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" value="<?=$user['email']?>" maxlength="255" required>
                     <label for="floatingEmail">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="tel" class="form-control rounded-0 focus-ring focus-ring-success" name="phoneNumber" id="floatingPhoneNumber" placeholder="name@example.com" value="<?=$user['phoneNumber']?>">
+                    <input type="tel" class="form-control rounded-0 focus-ring focus-ring-success" name="phoneNumber" id="floatingPhoneNumber" placeholder="name@example.com" value="<?=$user['phoneNumber']?>" maxlength="20">
                     <label for="floatingPhoneNumber">Phone number</label>
                 </div>
                 <!-- <div class="form-floating mb-3">
@@ -91,11 +91,11 @@
                     <form action="edit-profile.php" method="post">
                         <div class="modal-body">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="oldPassword" id="floatingOldPassword" placeholder="Old password" required>
+                                <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="oldPassword" id="floatingOldPassword" placeholder="Old password" minlength="8" maxlength="32" required>
                                 <label for="floatingOldPassword">Old password</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="newPassword" id="floatingNewPassword" placeholder="New password" required>
+                                <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="newPassword" id="floatingNewPassword" placeholder="New password" minlength="8" maxlength="32" required>
                                 <label for="floatingNewPassword">New password</label>
                             </div>
                             <?=$pwFormMsg?>
@@ -132,7 +132,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title">Are you sure?</h5>
+                        <h5 class="modal-title">Confirm action</h5>
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to <span class="fst-italic text-danger">permanently</span> delete your profile? This action is not reversible.</p>

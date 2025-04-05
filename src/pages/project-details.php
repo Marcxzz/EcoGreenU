@@ -71,12 +71,12 @@
                         <div class="border rounded-0 p-3">
                             <h3 class="text-success"><?=number_format($raisedAmount, 2)?> $</h3>
                             <h5 class="mb-3">Goal: <?=number_format($project['targetAmount'], 2)?> $</h5>
-                            <p class="m-0">Before: <?=formatDate($project['deadline'], 'd/m/Y H:i:s')?></p>
+                            <p class="m-0">Before: <?=formatDate($project['deadline'], 'd/m/Y H:i')?></p>
                             <div class="row g-3 mt-0">
                                 <?php if($project['status'] == 0): ?>
                                     <?php if(isset($_SESSION['user_id'])): ?>
                                         <div class="col col-xl-12">
-                                            <button type="button" class="btn btn-success w-100 rounded-0">Donate</button>
+                                            <a href="donate.php?id=<?=$project['idProject']?>" class="btn btn-success w-100 rounded-0">Donate</a>
                                         </div>
                                     <?php else: ?>
                                         <div class="col col-xl-12">
@@ -86,7 +86,7 @@
                                 <?php endif; ?>
                                 <?php if($owner): ?>
                                     <div class="col col-xl-12">
-                                        <button type="button" class="btn btn-outline-success w-100 rounded-0">Edit project</button>
+                                        <a href="edit-project.php?id=<?=$project['idProject']?>" class="btn btn-outline-success w-100 rounded-0">Edit project</a>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -121,8 +121,6 @@
             <?php else: echo 'no project found'; ?>
             <?php endif; ?>
         </div>
-
-        <?php // include '../shared/footer.php' ?>
     </div>
 </body>
 </html>

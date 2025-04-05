@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS tblusers (
   passwordHash CHAR(128) NOT NULL,
   profilePicPath CHAR(100)
 );
-INSERT INTO tblusers (idUser, firstName, lastName, email, phoneNumber, passwordHash, profilePicPath) VALUES
-(1, 'Mario', 'Rossi', 'mario.rossi@example.com', '+39 347 234 5678', '$2y$10$gf1Xwk8FlL3S9xKn18hs..u3G7jDljXcXAoi9r1AbYABweqPTT3OK', NULL),
-(2, 'Luigi', 'Bianchi', 'luigi.bianchi@example.it', NULL, '$2y$10$egWzzRqgoo5fR1mU.1tsHuAaEoncS8Hqgah7c1z7V6t0/sUzXV5ZO', NULL),
-(3, 'Ugo', 'Verdi', 'ugo.verdi@test.org', '+39 331 898 2023', '$2y$10$OUjRv6VgJlJ4SAOs8ejxiOuM/eERpLXB0rYx.hr2CZ4M/ApTI55Dq', NULL),
-(4, 'John', 'Doe', 'john.doe@gmail.com', NULL, '$2y$10$8/YhhUZ/vBldYa2cbfE1leGsz9KGGPM59FCpuNKUAzZWwbXPr9PHW', NULL);
+INSERT INTO tblusers (idUser, firstName, lastName, email, phoneNumber, passwordHash) VALUES
+(1, 'Mario', 'Rossi', 'mario.rossi@example.com', '+39 347 234 5678', '$2y$10$gf1Xwk8FlL3S9xKn18hs..u3G7jDljXcXAoi9r1AbYABweqPTT3OK'),
+(2, 'Luigi', 'Bianchi', 'luigi.bianchi@example.it', NULL, '$2y$10$egWzzRqgoo5fR1mU.1tsHuAaEoncS8Hqgah7c1z7V6t0/sUzXV5ZO'),
+(3, 'Ugo', 'Verdi', 'ugo.verdi@test.org', '+39 331 898 2023', '$2y$10$OUjRv6VgJlJ4SAOs8ejxiOuM/eERpLXB0rYx.hr2CZ4M/ApTI55Dq'),
+(4, 'John', 'Doe', 'john.doe@gmail.com', NULL, '$2y$10$8/YhhUZ/vBldYa2cbfE1leGsz9KGGPM59FCpuNKUAzZWwbXPr9PHW');
 
 
 CREATE TABLE IF NOT EXISTS tblprojects (
@@ -42,11 +42,11 @@ CREATE TABLE IF NOT EXISTS tblprojects (
     FOREIGN KEY (fundraiser) REFERENCES tblusers(iduser)
 );
 INSERT INTO tblprojects (idProject, title, description, img,  fundraiser, targetAmount, deadline, status) VALUES
-(1, 'Forest Restoration Initiative', 'Reforestation project to restore degraded areas and promote biodiversity.', 'project-1.jpg', 1, 50000, '2025-12-31 23:59:59', '0'),
-(2, 'Solar Energy for Rural Areas', 'Project to install solar panels in rural areas, improving access to renewable energy.', 'project-2.jpg', 2, 150000, '2025-06-30 23:59:59', '1'),
-(3, 'Recycling for a Better Future', 'Establishment of a recycling plant to reduce plastic pollution in cities.', 'project-3.jpg', 1, 30000, '2025-09-15 23:59:59', '0'),
-(4, 'Sustainable Urban Agriculture', 'Urban agriculture project using environmentally sustainable farming techniques to feed cities.', 'project-4.jpg', 3, 70000, '2025-08-01 23:59:59', '2'),
-(5, 'Clean Oceans Campaign', 'Project to clean the seas and oceans with the help of environmentally friendly technologies for waste collection.', 'project-5.jpg', 3, 200000, '2025-10-15 23:59:59', '0');
+(1, 'Forest Restoration Initiative', 'Reforestation project to restore degraded areas and promote biodiversity.', 'project-1.jpg', 1, 50000, '2025-12-31 23:59', '0'),
+(2, 'Solar Energy for Rural Areas', 'Project to install solar panels in rural areas, improving access to renewable energy.', 'project-2.jpg', 2, 150000, '2025-06-30 23:59', '1'),
+(3, 'Recycling for a Better Future', 'Establishment of a recycling plant to reduce plastic pollution in cities.', 'project-3.jpg', 1, 30000, '2025-09-15 23:59', '0'),
+(4, 'Sustainable Urban Agriculture', 'Urban agriculture project using environmentally sustainable farming techniques to feed cities.', 'project-4.jpg', 3, 70000, '2025-08-01 23:59', '2'),
+(5, 'Clean Oceans Campaign', 'Project to clean the seas and oceans with the help of environmentally friendly technologies for waste collection.', 'project-5.jpg', 3, 200000, '2025-10-15 23:59', '0');
 
 
 CREATE TABLE IF NOT EXISTS tblPayments (

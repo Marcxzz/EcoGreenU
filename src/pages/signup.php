@@ -52,19 +52,19 @@
             <form action="signup.php" method="POST">
                 <img src="../assets/logo/logo-light.svg" id="logo" alt="EcoGreenU logo" class="w-100 mb-5">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" required>
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="firstName" id="floatingFirstName" placeholder="John" maxlength="50" required>
                     <label for="floatingFirstName">First name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" required>
+                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="lastName" id="floatingLastName" placeholder="Doe" maxlength="50" required>
                     <label for="floatingLastName">Last name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" required>
+                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" maxlength="255" required>
                     <label for="floatingEmail">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password" required>
+                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password" minlength="8" maxlength="32" required>
                     <label for="floatingPassword">Password</label>
                 </div>
                 <button type="submit" class="btn btn-success w-100 rounded-0" id="signupBtn">Sign up</button>

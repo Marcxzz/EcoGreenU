@@ -61,7 +61,7 @@
                     <p>EcoGreenU is committed to ensuring that every project on the platform meets strict criteria for sustainability and innovation. We want to be the meeting point between those who have an idea and those who wish to support it, so that every small step can lead to big change.</p>
                 </section>
                 
-                <section class="">
+                <section style="margin-bottom:100px;">
                     <h2>Our <span class="highlight fw-bold">Vision</span></h2>
                     <img src="../assets/images/about-us/vision.jpg" alt="EcoGreenU vision" class="w-100 my-2 mb-3">
                     <p>Our dream is a world where technology and sustainability come together to create a <b>healthier and safer environment</b> for all. Over the next few years, we want to expand EcoGreenU globally, becoming the <b></b> for green projects.</p>
@@ -69,7 +69,5 @@
                 </section>
             </div>
         </div>
-
-        <?php // include '../shared/footer.php' ?>
     </div>
 </body>
