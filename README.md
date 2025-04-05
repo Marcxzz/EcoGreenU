@@ -7,7 +7,7 @@ EcoGreenU
 ├── docs                    # documentation files (class diagram, design choises report, etc.)
 ├── src                     # project main folder
 |   ├── _shared             # [OLD] shared php "components" (not used anymore)
-|   ├── assets              # assets folder, for images (user profile picture, project thumbnail, etc.)
+|   ├── assets              # assets folder, for images (logos, project thumbnail, etc.)
 |   ├── css                 # css style sheets
 |   ├── js                  # js scripts
 |   ├── pages               # html/php pages

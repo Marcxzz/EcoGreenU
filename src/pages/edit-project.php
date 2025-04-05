@@ -49,12 +49,12 @@
 
         <div class="container-fluid p-3 m-0" id="main">
             <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+                <?php if(!isset($project["img"])): ?>
+                    <img src="../assets/images/proj-thumbnail-default.jpg" class="edit-project-thumb-preview mb-2" alt="<?=$p["title"]?>">
+                <?php else: ?>
+                    <img src="../assets/images/projects/<?=$project['img']?>" alt="<?=$project['title']?>" class="edit-project-thumb-preview mb-2">
+                <?php endif; ?>
                 <form action="edit-project.php?id=<?=$projectId?>" method="post" enctype="multipart/form-data">
-                    <?php if(!isset($project["img"])): ?>
-                        <img src="../assets/images/proj-thumbnail-default.jpg" class="card-img-top edit-project-thumb-preview mb-2" alt="<?=$p["title"]?>">
-                    <?php else: ?>
-                        <img src="../assets/images/projects/<?=$project['img']?>" alt="<?=$project['title']?>" class="card-img-top edit-project-thumb-preview mb-2">
-                    <?php endif; ?>
                     <input type="file" class="form-control rounded-0 focus-ring focus-ring-success mb-3" name="thumbnail" accept=".jpg,.png,.jpeg">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="title" id="floatingTitle" placeholder="My new green project" minlenght="5" maxlength="30" required value="<?=$project['title']?>">
@@ -74,8 +74,8 @@
                     </div>
                     <button type="submit" class="btn btn-success w-100 rounded-0" name="editProject">Edit project</button>
                     <button type="button" class="btn text-danger rounded-0 w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteProjectModal">Delete profile</button>
-                    <p class="text-danger text-center my-3"><?=$errorMsg?></p>
-                    <p class="text-success text-center my-3"><?=$infoMsg?></p>
+                    <p class="text-danger text-center my-3 w-100"><?=$errorMsg?></p>
+                    <p class="text-success text-center my-3 w-100"><?=$infoMsg?></p>
                 </form>
             </div>
         </div>
@@ -91,7 +91,7 @@
                         <p>Are you sure you want to <span class="fst-italic text-danger">permanently</span> delete this project? This action is not reversible. If you continue, those who donated to this project will receive a refund.</p>
                     </div>
                     <div class="modal-footer">
-                        <form action="edit-project.php" method="post">
+                        <form action="edit-project.php?id=<?=$project['idProject']?>" method="post">
                             <button type="button" class="btn btn-success rounded-0" data-bs-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-outline-danger rounded-0" data-bs-dismiss="modal" name="deleteProject">I'm sure</button>
                         </form>

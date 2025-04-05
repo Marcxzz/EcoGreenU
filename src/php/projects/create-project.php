@@ -26,10 +26,16 @@
         try {
             $query->execute();
             $projectId = $query->insert_id;
+            $filename = saveProjectThumbnail($projectId);
+            
+            $query = $db->prepare("UPDATE tblprojects SET img = ? WHERE idProject = ?");
+            $query->bind_param("si", $filename, $projectId);
+            $query->execute();
+
             $query->close();
             $db->close();
             $infoMsg = "Project added successfully! with ID $projectId";
-            saveProjectThumbnail($projectId);
+            header("refresh:3;url=../pages/project-details.php?id=$projectId"); // reindirizza l'utente dopo 3 secondi
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() == 1062) { // codice errore per violazionw del vincolo UNIQUe
                 $errorMsg = "Error: a project already exists with this title.";
@@ -65,7 +71,7 @@
         if (!in_array($imageFileType, $allowedTypes)) // controlla se il formato dell'immagine inserita rientra tra quelli ammessi
             $errorMsg ="Error: only JPG, JPEG and PNG images are allowed.";
     
-        $targetFile = $targetDir . "/project-" . $projectId . "." . $imageFileType; // nome file = path/project-ID.estensione
+        $targetFile = "$targetDir/project-$projectId.$imageFileType"; // nome file = path/project-ID.estensione
     
         if (file_exists($targetFile)) // controlla se esiste già un'immagine per il progetto
             $errorMsg = "Error: an image already exists for this project.";
@@ -74,9 +80,13 @@
         if ($check === false) // verifica se il file è realmente un'immagine (e non un altro file spacciato come foto)
             $errorMsg = "Error: uploaded file is not an image.";
     
-        if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile)) // sposta il file nella cartella
+        if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile)) { // sposta il file nella cartella
             $infoMsg = $infoMsg . "Image successfully loaded for project " . $projectId;
-        else
+            return "project-$projectId.$imageFileType";
+        }
+        else {
             $errorMsg = "Error: uploading failed.";
+            return;
+        }
     }
 ?>

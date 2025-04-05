@@ -3,7 +3,7 @@
 - [ ] permettere inserimento/modifica/cancellazione contenuti (progetti)
     - [x] aggiunta progetto
     - [x] modifica progetto
-    - [ ] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
+    - [x] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
     - [ ] chiusura manuale progetto
 - [x] evitare sql injection
 - [x] dark mode
@@ -17,6 +17,7 @@
 ## Importanti
 - verificare duplicazione email nel signup (try-catch)
 - donare ai progetti
+- fixare larghezza form modifica progetto quando il messaggio di errore diventa molto largo
 
 ## Meno importanti
 - riorganizzare css

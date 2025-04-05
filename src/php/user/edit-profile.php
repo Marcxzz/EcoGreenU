@@ -1,4 +1,3 @@
-<!-- MAIN -->
 <?php
     session_start();
     $user;

@@ -177,5 +177,15 @@ p.card-text{
 }
 
 .edit-project-thumb-preview{
-    max-width: 450px !important;
+    max-width: 100% !important;
+    max-height: 400px !important;
+    object-fit:contain !important;
+    /* padding: 0 16px; */
+}
+
+.user-pfp{
+    max-width: 200px !important;
+    height: 100% !important;
+    /* max-height: 200px !important; */
+    aspect-ratio: 1/1 !important;
 }

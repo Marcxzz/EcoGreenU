@@ -49,14 +49,14 @@
         </nav>
 
         <div class="container-fluid p-0 m-0 row g-5" id="main">
-            <div class="col-12 col-md-auto px-5">
-                <div class="d-flex flex-column flex-sm-row flex-md-column align-items-center gap-4">
-                    <img src="../assets/images/pfp-default.jpg" width="200" class="rounded-circle" alt="User profile picture">
-                    <div class="flex-column justify-content-center align-items-md-center">
-                        <h5 class="text-center text-sm-start text-md-center"><?php echo $user['firstName'].' '.$user['lastName']; ?></h5>
-                        <p class="text-center text-sm-start text-md-center m-0 text-muted"><?php echo $user['email']; ?></p>
+            <div class="col-12 col-md-auto col-lg-4 col-xl-3 col-xxl-2 px-5">
+                <div class="d-flex flex-column flex-sm-row flex-lg-column align-items-center gap-4">
+                    <img src="../assets/images/pfp-default.jpg" class="rounded-circle user-pfp" alt="User profile picture">
+                    <div class="flex-column justify-content-center align-items-xl-center">
+                        <h5 class="text-center text-sm-start text-lg-center"><?php echo $user['firstName'].' '.$user['lastName']; ?></h5>
+                        <p class="text-center text-sm-start text-lg-center m-0 text-muted"><?php echo $user['email']; ?></p>
                         <?php if(isset($user['phoneNumber'])): ?>
-                            <p class="text-center text-sm-start text-md-center m-0 text-muted"><?php echo $user['phoneNumber']; ?></p>
+                            <p class="text-center text-sm-start text-lg-center m-0 text-muted"><?php echo $user['phoneNumber']; ?></p>
                         <?php endif; ?>
                         <form action="profile.php" method="POST" class="mt-3">
                             <a class="btn btn-success rounded-0 w-100" href="edit-profile.php">Edit profile</a>
@@ -66,9 +66,9 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-12 col-lg-8 col-xl-9 col-xxl-10">
                 <h3 class="mb-4">Your projects</h3>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 row-cols-xxl-4 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 row-cols-xxl-4 g-3">
                     <?php if(count($projects) > 0): ?>
                         <?php foreach($projects as $p): ?>
                             <div class="col">

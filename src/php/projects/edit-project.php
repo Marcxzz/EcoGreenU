@@ -47,8 +47,51 @@
         }
     }
 
+
+    
+                                        // ======================
+                                        // DA RIVEDERE
+                                        // ======================
+
     if (isset($_POST['deleteProject'])) {
-        // il progetto verrà eliminato dal db
+        $query = $db->prepare("SELECT SUM(amount) AS raisedAmount FROM tblpayments WHERE projectId = ?");
+        $query->bind_param("i", $projectId);
+
+        try {
+            $query->execute();
+            $result = $query->get_result();
+
+            if ($result){
+                $raisedAmount = $result->fetch_assoc()['raisedAmount'];
+
+                if ($raisedAmount <= 1000) {
+                    $query = $db->prepare("DELETE FROM tblpayments WHERE projectId = ?");
+                    $query->bind_param("i", $projectId);
+                    
+                    try {
+                        $query->execute();
+                        $query = $db->prepare("DELETE FROM tblprojects WHERE idproject = ?");
+                        $query->bind_param("i", $projectId);
+                        try {
+                            $query->execute();
+                            deleteProjectThumbnail();
+                            header('location: ../pages/profile.php');
+                        } catch (mysqli_sql_exception $e) {
+                            $errorMsg = "Error during project deleting: " . $e->getMessage();
+                        }
+                        deleteProjectThumbnail();
+                        header('location: ../pages/profile.php');
+                    } catch (mysqli_sql_exception $e) {
+                        $errorMsg = "Error during project deleting: " . $e->getMessage();
+                    } finally {
+                        $query->close();
+                        $db->close();
+                    }
+                } else $errorMsg = "You cannot delete a project with more than $1,000 total donations.";
+            }
+        } catch (mysqli_sql_exception $e) {
+            $errorMsg = "Error during project deleting: " . $e->getMessage();
+        }
     }
 
     function formatDate($date, $format){
@@ -78,12 +121,23 @@
         $targetFile = $targetDir . "/project-" . $projectId . "." . $imageFileType; // nome file = path/project-ID.estensione
     
         $check = getimagesize($_FILES["thumbnail"]["tmp_name"]);
-        if ($check === false) // verifica se il file è realmente un'immagine (e non un altro file spacciato come foto)
+        if ($check === false) // verifica se il file è raelmente un'immagine (e non un altro file spacciato come foto)
             $errorMsg = "Error: uploaded file is not an image.";
     
         if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile)) // sposta il file nella cartella
             $infoMsg = $infoMsg . "Image successfully loaded for project " . $projectId;
         else
             $errorMsg = "Error: uploading failed.";
+    }
+
+    function deleteProjectThumbnail(){
+        global $projectId, $project;
+        $filename = $project['img'];
+        $path = "../assets/images/projects/$filename";
+
+        if (file_exists($path)){
+            unlink($path);
+            echo "Project thumbnail successfully deleted";
+        }
     }
 ?>
