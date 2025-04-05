@@ -1,10 +1,9 @@
 # Requisiti
 - [x] permettere cancellazione account utente
-- [ ] permettere inserimento/modifica/cancellazione contenuti (progetti)
+- [x] permettere inserimento/modifica/cancellazione contenuti (progetti)
     - [x] aggiunta progetto
     - [x] modifica progetto
     - [x] eliminazione progetto (se donazioni <1000$, verranno rimborsati -> specificare nel report)
-    - [ ] chiusura manuale progetto
 - [x] evitare sql injection
 - [x] dark mode
 - [x] ricerca dinamica progetti
@@ -17,19 +16,21 @@
 ## Importanti
 - verificare duplicazione email nel signup (try-catch)
 - donare ai progetti
+- ? aggiungere fundraiser alla pagina dettagli progetto
 - fixare larghezza form modifica progetto quando il messaggio di errore diventa molto largo
 
 ## Meno importanti
-- riorganizzare css
-- ? pulire codice?
-- bloccare info utente da scroll nella pagina profilo
+- ? chiusura manuale progetto
+- ? riorganizzare css
+- ? pulire codice
 - ? filtrare progetti
-- fixare colore sfondo input login/signup per l'autofill
+- bloccare info utente da scroll nella pagina profilo
 - ? aggiungere validation bootstrap ai forms
 
 ## Non funzionano
 - mettere un dropdown nella navbar per il profilo
 - mettere icon links
+- fixare colore sfondo input login/signup per l'autofill
 
 
 # Done

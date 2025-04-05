@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" placeholder="Leave a comment here" id="floatingDescription" style="height:150px; max-height:300px;" minlength="50" maxlength="250" required></textarea>
-                        <label for="floatingTexfloatingDescriptiontarea">Description</label>
+                        <label for="floatingDescription">Description</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control rounded-0 focus-ring focus-ring-success" name="targetAmount" id="floatingTargetAmount" value="10000" min="1000" max="999999999" step="1000" required>
