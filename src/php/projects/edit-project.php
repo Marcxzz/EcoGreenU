@@ -99,10 +99,6 @@
         return $datetime->format($format);
     }
 
-    function isRealDate($date) { 
-        return strtotime($date) === false ? false : true;
-    }
-
     function saveProjectThumbnail($projectId){
         global $infoMsg, $errorMsg;
         $targetDir = "../assets/images/projects"; // cartella di destinazione

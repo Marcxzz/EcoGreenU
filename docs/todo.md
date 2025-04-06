@@ -7,15 +7,15 @@
 - [x] evitare sql injection
 - [x] dark mode
 - [x] ricerca dinamica progetti
-- [ ] 100% responsive
+- [x] 100% responsive
 - [ ] report scelte progettuali
 - [x] file .sql con create table
 
 
 # To-do
 ## Importanti
-- verificare duplicazione email nel signup (try-catch)
-- donare ai progetti
+- **fare class-diagram.md**
+- verificare duplicazione email nel signup con try-catch
 - ? aggiungere fundraiser alla pagina dettagli progetto
 - fixare larghezza form modifica progetto quando il messaggio di errore diventa molto largo
 
@@ -51,3 +51,4 @@
 - aggiungere favicon
 - visualizzare anche progetti con 0$
 - aggiungere validazione input (min, max, minlength)
+- donare ai progetti

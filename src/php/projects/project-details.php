@@ -26,7 +26,9 @@
                                     FROM tblprojects
                                 INNER JOIN tblpayments ON tblprojects.idproject = tblpayments.projectid
                                 INNER JOIN tblusers ON tblpayments.userid = tblusers.idUser
-                                   WHERE idProject = $project_id");
+                                   WHERE idProject = $project_id
+                                ORDER BY tblpayments.date DESC
+                                   LIMIT 5");
             
             if ($result) {
                 while ($row = $result->fetch_assoc()) {

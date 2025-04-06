@@ -50,10 +50,6 @@
         return $datetime->format($format);
     }
 
-    function isRealDate($date) { 
-        return strtotime($date) === false ? false : true;
-    }
-
     // ini_set('display_errors', 0);
     function saveProjectThumbnail($projectId){
         global $infoMsg, $errorMsg;

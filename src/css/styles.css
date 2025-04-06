@@ -40,10 +40,10 @@ body {
 .darkmode #theme-switch i:last-child{
     display: block !important;
 }
-.form-floating>.form-control-plaintext~label,
-.form-floating>.form-control:focus~label,
-.form-floating>.form-control:not(:placeholder-shown)~label,
-.form-floating>.form-select~label{
+.form-floating > .form-control-plaintext ~ label,
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
     color: var(--foreground-color) !important; /* overrides input label bg color when input is on :focus */
 }
 .table>:not(caption)>*>*{
@@ -129,7 +129,8 @@ a.navbar-brand{
 input.form-control:focus,
 textarea.form-control:focus,
 input.form-check-input:focus,
-input.form-check-input:checked{
+input.form-check-input:checked,
+select.form-select:focus{
     border-color: var(--primary-green) !important;
 }
 input.form-check-input:checked{
@@ -164,11 +165,11 @@ input::file-selector-button{ /* changes input file button colors */
     background-color: var(--primary-green) !important;
     color: #fff !important;
 }
-input #floatingTargetAmount::-webkit-inner-spin-button,
+/* input #floatingTargetAmount::-webkit-inner-spin-button,
 input #floatingTargetAmount::-webkit-outer-spin-button{
     background-color: var(--background-color) !important;
     color: var(--foreground-color) !important;
-}
+} */
 
 /* nelle card dei progetti, mostra solo le prime tre righe */
 p.card-text{
@@ -193,3 +194,7 @@ p.card-text{
     /* max-height: 200px !important; */
     aspect-ratio: 1/1 !important;
 }
+
+/* *{
+    scrollbar-color: var(--bs-secondary-color) transparent !important;
+} */

@@ -1,3 +1,6 @@
+# 🔐 User credentials
+This file contains login credentials of some test users, in order to speed up testing and debugging.
+
 | User email | Hashed password |
 | - | - |
 | mario.rossi@example.com | password123 |

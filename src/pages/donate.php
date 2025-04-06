@@ -49,62 +49,60 @@
         </nav>
 
         <div class="container-fluid p-3 m-0 vh-100 w-100 d-flex flex-column justify-content-center align-items-center" id="main">
-            <form action="donate.php" method="POST">
+            <form action="donate.php?id=<?=$projectId?>" method="POST">
                 <h3 class="mb-4">Donate to the project</h3>
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control rounded-0 focus-ring focus-ring-success" name="amount" id="floatingAmount" placeholder="" min="0" required>
                     <label for="floatingAmount">Amount</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" id="floatingDescription" style="height:150px; max-height:300px;" placeholder="" maxlength="150"></textarea>
+                    <textarea class="form-control rounded-0 focus-ring focus-ring-success" name="description" id="floatingDescription" style="height:100px; max-height:150px;" placeholder="" maxlength="150"></textarea>
                     <label for="floatingDescription">Description</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="" required>
-                    <label for="floatingEmail">Payment method</label>
+                    <select class="form-select rounded-0 focus-ring focus-ring-success" name="paymentMethod" id="floatingPaymentMethod" required>
+                        <option selected disabled>Select the payment method</option>
+                        <option value="1">Bank transfer</option>
+                        <option value="2">VISA</option>
+                        <option value="3">MasterCard</option>
+                        <option value="4">Debit card</option>
+                    </select>
+                    <label for="floatingPaymentMethod">Payment method</label>
                 </div>
                 <div class="form-check mb-3">
-                    <input class="form-check-input text-success focus-ring focus-ring-success" type="checkbox" value="" id="checkPublic">
+                    <input class="form-check-input text-success rounded-0 focus-ring focus-ring-success" type="checkbox" name="public" id="checkPublic">
                     <label class="form-check-label" for="checkPublic">
                         Show this donation as public
                     </label>
                 </div>
                 <button type="submit" class="btn btn-success w-100 rounded-0 mt-5" name="donate">Confirm donation</button>
-                <!-- <p class="text-danger text-center my-3"><?=$form_error_msg?></p>
-                <p class="text-success text-center my-3"><?=$changesAppliedMsg?></p> -->
-                <button type="button" class="btn text-secondary rounded-0 w-100 mt-3" data-bs-toggle="modal" data-bs-target="#confirmCancel">Cancel</button>
+                <a class="btn text-secondary rounded-0 w-100 mt-3" href="project-details.php?id=1">Cancel</a>
+                <p class="text-danger text-center my-3"><?=$errorMsg?></p>
+                <p class="text-success text-center my-3"><?=$infoMsg?></p>
             </form>
         </div>
 
 
-        <div class="modal fade" tabindex="-1" id="changePasswordModal">
+        <!-- <div class="modal fade" tabindex="-1" id="confirmDonationModal" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title">Change password</h5>
+                        <h5 class="modal-title">Proceed with the payment?</h5>
                     </div>
-                    <form action="edit-profile.php" method="post">
-                        <div class="modal-body">
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="oldPassword" id="floatingOldPassword" placeholder="Old password" minlength="8" maxlength="32" required>
-                                <label for="floatingOldPassword">Old password</label>
-                            </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="newPassword" id="floatingNewPassword" placeholder="New password" minlength="8" maxlength="32" required>
-                                <label for="floatingNewPassword">New password</label>
-                            </div>
-                            <?=$pwFormMsg?>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success rounded-0" data-bs-dismiss="modal" name="changePassword">Change password</button>
-                        </div>
-                    </form>
+                    <div class="modal-body">
+                        <p>Do you confirm that you want to finalize payment for this project??</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="edit-profile.php" method="post">
+                            <button type="button" class="btn btn-success rounded-0" data-bs-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-danger rounded-0" data-bs-dismiss="modal" name="donate">Yes</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="modal fade" tabindex="-1" id="saveChangesModal" data-bs-backdrop="static" data-bs-keyboard="false">
+        <!-- <div class="modal fade" tabindex="-1" id="confirmCancelModal" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
@@ -114,33 +112,12 @@
                         <p>Are you sure you want to edit your profile information?</p>
                     </div>
                     <div class="modal-footer">
-                        <form action="edit-profile.php" method="post">
-                            <button type="button" class="btn btn-success rounded-0" data-bs-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-danger rounded-0" data-bs-dismiss="modal" name="editProfile">I'm sure</button>
-                        </form>
+                        <button type="button" class="btn btn-success rounded-0" data-bs-dismiss="modal">No</button>
+                        <a href="project-details.php?id=1" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Cancel</a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="modal fade" tabindex="-1" id="deleteProfileModal" data-bs-backdrop="static" data-bs-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Confirm action</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to <span class="fst-italic text-danger">permanently</span> delete your profile? This action is not reversible.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="edit-profile.php" method="post">
-                            <button type="button" class="btn btn-success rounded-0" data-bs-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-outline-danger rounded-0" data-bs-dismiss="modal" name="deleteUser">I'm sure</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
     <script>
         const myModal = document.getElementById('myModal')
