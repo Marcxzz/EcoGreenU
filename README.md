@@ -35,15 +35,14 @@ If you'd like to take a look to the class diagram, [here you are](docs/class-dia
 EcoGreenU
 ├── docs                    # documentation files (class diagram, design choises report, etc.)
 ├── src                     # project main folder
-|   ├── _shared             # [OLD] shared php "components" (not used anymore)
-|   ├── assets              # assets folder, for images (logos, project thumbnail, etc.)
+|   ├── assets              # assets folder (logos, projects thumbnail, etc.)
 |   ├── css                 # css style sheets
 |   ├── js                  # js scripts
-|   ├── pages               # html/php pages
-|   ├── php                 # php scripts for backend and DB management
+|   ├── pages               # html/php pages (.php)
+|   ├── php                 # php scripts for backend and server-side logic
 |   ├── utils               # miscellaneous files
-|   |   └── dbEcoGreenU.sql # DB queries (CREATE TABLEs and INSERT INTOs)
-|   └── index.php           # website main page
+|   |   └── dbEcoGreenU.sql # queries for db and table creation + insert into
+|   └── index.php           # main page
 └── README.md               # project documentation (the file you reading right now)
 ```
 
