@@ -33,17 +33,18 @@ If you'd like to take a look to the class diagram, [here you are](docs/class-dia
 ## 🗂️ Project structure
 ```bash
 EcoGreenU
-├── docs                    # documentation files (class diagram, design choises report, etc.)
-├── src                     # project main folder
-|   ├── assets              # assets folder (logos, projects thumbnail, etc.)
-|   ├── css                 # css style sheets
-|   ├── js                  # js scripts
-|   ├── pages               # html/php pages (.php)
-|   ├── php                 # php scripts for backend and server-side logic
-|   ├── utils               # miscellaneous files
-|   |   └── dbEcoGreenU.sql # queries for db and table creation + insert into
-|   └── index.php           # main page
-└── README.md               # project documentation (the file you reading right now)
+├── docs                        # documentation files (class diagram, design choises report, etc.)
+├── src                         # project main folder
+|   ├── assets                  # assets folder (logos, projects thumbnail, etc.)
+|   ├── css                     # css style sheets
+|   ├── js                      # js scripts
+|   ├── pages                   # html/php pages (.php)
+|   ├── php                     # php scripts for backend and server-side logic
+|   ├── db                      # db-related files (SQL commands)
+|   |   └── 1-create-tables.sql # CREATE DATABASE & CREATE TABLE queries
+|   |   └── 2-insert-into.sql   # INSERTO INTO queries
+|   └── index.php               # main page
+└── README.md                   # project documentation (the file you reading right now)
 ```
 
 
