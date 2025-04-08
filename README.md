@@ -8,15 +8,15 @@
 This application was built as part of a school assignment to explore web development using **PHP**, **MySQL**, **HTML**, **CSS**, and **JavaScript**, with **XAMPP** as the local development environment.
 
 EcoGreenU simulates a fully functional web platform designed for:
-- **Browsing eco-friendly projects**
-- **Registering and logging in users**
-- **Viewing detailed project pages**
-- **Managing user profiles**
-- **Create new projects**
-- **Donate to eco-sustainable projects**
+- Browsing eco-friendly projects
+- Registering and logging in users
+- Viewing detailed project pages
+- Managing user profiles
+- Create new projects
+- Donate to eco-sustainable projects
 
 If you'd like to see all my design choices, you can find them within the [Design Choices Report](docs/design-choises-report.md).
-If you'd like to take a look to the class diagram, [here you are](docs/class-diagram.md).
+Here's the [class diagram](docs/class-diagram.dia).
 
 
 ## 🔧 Features

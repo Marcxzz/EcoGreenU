@@ -1,7 +1,7 @@
 # 💭 Design Choises Report
 Questo documento contiene tutte le scelte progettuali durante lo sviluppo del progetto (infrastruttura, database, interfaccia, ecc.).
 
-2. Analisi dei requisiti e vincoli
+## 📋 Analisi dei requisiti e vincoli
 Il progetto è stato sviluppato nel rispetto dei seguenti vincoli funzionali e tecnici:
 - Compatibilità con XAMPP in configurazione nativa.
 - Installazione tramite semplice copia della cartella nella directory `htdocs`.
