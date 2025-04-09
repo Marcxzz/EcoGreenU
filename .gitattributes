@@ -1,6 +1,0 @@
-php/* text diff=php
-css/* text diff=css
-js/* text diff=js
-pages/* text diff=html
-docs/* linguist-vendored
-*.md text diff=markdown

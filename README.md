@@ -16,7 +16,7 @@ EcoGreenU simulates a fully functional web platform designed for:
 - Donate to eco-sustainable projects
 
 If you'd like to see all my design choices, you can find them within the [Design Choices Report](docs/design-choises-report.md).
-Here's the [class diagram](docs/class-diagram.dia).
+If you'd like to see the class diagram, here's the [.dia version](docs/class-diagram.dia) (made with [Dia](http://dia-installer.de/) software), otherwise the [markdown version](docs/class-diagram.md).
 
 
 ## 🔧 Features
@@ -40,7 +40,7 @@ EcoGreenU
 |   ├── js                      # js scripts
 |   ├── pages                   # html/php pages (.php)
 |   ├── php                     # php scripts for backend and server-side logic
-|   ├── db                      # db-related files (SQL commands)
+|   ├── sql                     # db-related files (SQL commands)
 |   |   └── 1-create-tables.sql # CREATE DATABASE & CREATE TABLE queries
 |   |   └── 2-insert-into.sql   # INSERTO INTO queries
 |   └── index.php               # main page
