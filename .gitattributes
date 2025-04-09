@@ -1,0 +1,6 @@
+php/* diff=php
+css/* diff=css
+js/* diff=js
+pages/* diff=html
+docs/* linguist-vendored
+*.md diff=markdown
