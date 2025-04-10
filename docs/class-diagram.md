@@ -1,6 +1,6 @@
 ```mermaid
 classDiagram
-    %% direction LR
+    direction LR
 
     class Project {
         INT idProject
@@ -34,9 +34,16 @@ classDiagram
         CHAR[50] name
     }
 
-    User "1" --> "0..N" Project : Create
-    Project "1" --> "0..N" Payment : Have received
-    User "1" --> "0..N" Payment : Make
-    Payment "1" --> "1" PaymentMethod : Be done with
-    Payment "1" --> "1" Project : Refer
+    %% regole di lettura
+    Project "1..1" --> "0..N" Payment : Have received
+    Project "1..1" <-- "0..N" Payment : Refer
+
+    User "1..1" --> "0..N" Payment : Make
+    User "1..1" <-- "0..N" Payment : Made by
+
+    User "1..1" --> "0..N" Project : Create
+    User "1..1" <-- "0..N" Project : Created by
+
+    PaymentMethod "1..1" --> "0..N" Payment : Refer
+    PaymentMethod "1..1" <-- "0..N" Payment : Be done with
 ```

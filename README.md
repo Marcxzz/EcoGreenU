@@ -53,16 +53,16 @@ This project was built with the goal of learning:
 - Backend development with **PHP & MySQL**
 - Frontend structuring using **HTML/CSS/JS**
 - User authentication and session management
-- Working with local servers (XAMPP)
+- Working with local servers (**XAMPP**)
 
 
 ## 🧩 Tech Stack
-- PHP (backend & server-side logic)
-- MySQL (database)
-- HTML5 & CSS3 (frontend)
-- JavaScript (client-side interactivity)
-- XAMPP (Apache + MySQL)
-- Git (version control)
+- **PHP** (backend & server-side logic)
+- **MySQL** (database)
+- **HTML5** & **CSS3** (frontend)
+- **JavaScript** (client-side interactivity)
+- **XAMPP** (Apache + MySQL)
+- **Git** (version control)
 
 
 ## 🚀 How to Run the Project
@@ -74,4 +74,4 @@ This project was built with the goal of learning:
 
 
 ## 📃 License
-This project is for **educational use only** and not intended for commercial deployment.
+This project is for **educational use only** and not intended for commercial deployment. However, you'll still need my approval to use this project, especially if for lucrative purposes.
