@@ -3,6 +3,7 @@
 > DA FINIRE
 
 > specificare perchè non si possono eliminare progetti e soluzione (<1000$)
+> spiegare come si è risolta la questione dell'eliminazione dell'account
 
 
 

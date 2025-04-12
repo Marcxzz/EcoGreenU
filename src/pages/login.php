@@ -52,11 +52,11 @@
             <form action="login.php" method="POST">
                 <img src="../assets/logo/logo-light.svg" id="logo" alt="EcoGreenU logo" class="w-100 mb-5">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" maxlength="255" required>
+                    <input type="email" class="form-control rounded-0 focus-ring focus-ring-success" name="email" id="floatingEmail" placeholder="name@example.com" required>
                     <label for="floatingEmail">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password" minlength="8" maxlength="32" required>
+                    <input type="password" class="form-control rounded-0 focus-ring focus-ring-success" name="password" id="floatingPassword" placeholder="Password" required>
                     <label for="floatingPassword">Password</label>
                 </div>
                 <button type="submit" class="btn btn-success w-100 rounded-0" id="loginBtn">Log in</button>

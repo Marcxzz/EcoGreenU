@@ -11,7 +11,7 @@
         if (isset($_SESSION['user_id'])) {
             $user_id = $_SESSION['user_id'];
             
-            $result = $db->query("SELECT * FROM tblusers WHERE idUser = $user_id");
+            $result = $db->query("SELECT * FROM tblusers WHERE idUser = $user_id AND isDeleted = 0");
             if ($result->num_rows > 0) {
                 $user = $result->fetch_assoc();
                 // print_R($row);
@@ -98,13 +98,12 @@
 <?php
     if (isset($_POST['deleteUser'])) {
         $db = new mysqli("localhost", "root", "", "dbecogreenu");
-        if ($db->connect_error) {
+        if ($db->connect_error)
             exit("error during db connection");
-        }
 
         $userId = $_SESSION['user_id'];
         
-        $query = $db->prepare("DELETE FROM tblusers WHERE iduser = ?");
+        $query = $db->prepare("UPDATE tblusers SET isDeleted = TRUE WHERE idUser = ?");
         $query->bind_param("i", $userId);
         $query->execute();
         

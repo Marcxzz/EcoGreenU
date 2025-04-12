@@ -18,7 +18,7 @@
 
         $user_id = $_SESSION['user_id'];
         
-        $result = $db->query("SELECT * FROM tblusers WHERE idUser = '$user_id'");
+        $result = $db->query("SELECT * FROM tblusers WHERE idUser = '$user_id' AND isDeleted = 0");
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             // print_R($row);

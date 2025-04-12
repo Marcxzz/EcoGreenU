@@ -12,7 +12,7 @@
         $email = $_POST['email'];
         $password = $_POST["password"];
 
-        $query = $db->prepare("SELECT * FROM tblusers WHERE email = ?");
+        $query = $db->prepare("SELECT * FROM tblusers WHERE email = ? AND isDeleted = 0");
         $query->bind_param("s", $email);
         $query->execute();
         $result = $query->get_result()->fetch_assoc();
