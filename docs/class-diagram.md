@@ -19,6 +19,7 @@ classDiagram
         CHAR[255] email
         CHAR[20] phoneNumber
         CHAR[128] password
+        BOOL isDeleted
     }
 
     class Payment {

@@ -69,7 +69,7 @@ This project was built with the goal of learning:
 1. Clone this repository
 2. Place it in your `htdocs` folder (inside XAMPP)
 3. Start Apache and MySQL via the XAMPP control panel
-4. Import the database via phpMyAdmin, by pasting the queries inside `src/utils/dbEcoGreenU.sql`
+4. Import the database via phpMyAdmin, by pasting the queries inside `src/sql/`
 5. Navigate to the project directory in your browser
 
 
