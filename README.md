@@ -15,7 +15,7 @@ EcoGreenU simulates a fully functional web platform designed for:
 - Create new projects
 - Donate to eco-sustainable projects
 
-If you'd like to see all my design choices, you can find them within the [Design Choices Report](docs/design-choises-report.md).
+If you'd like to see all my design choices, you can find them within the [Design Choices Report](docs/report.md).
 If you'd like to see the class diagram, here's the [.dia version](docs/class-diagram.dia) (made with [Dia](http://dia-installer.de/) software), otherwise the [markdown version](docs/class-diagram.md).
 
 
