@@ -146,13 +146,7 @@
                 </div>
             </div>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
-    <script>
-        const myModal = document.getElementById('myModal')
-        const myInput = document.getElementById('myInput')
-
-        myModal.addEventListener('shown.bs.modal', () => {
-            myInput.focus()
-        })
-    </script>
 </body>

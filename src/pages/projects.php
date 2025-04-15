@@ -52,9 +52,9 @@
         <div class="container-fluid p-0 m-0" id="main">
             
             <div class="container-fluid p-3">
-                <div class="row mb-3">
+                <div class="row mb-4">
                     <div class="col">
-                        <h3 class="mb-3">Explore projects</h3>
+                        <h3 class="m-0">Explore projects</h3>
                     </div>
                     <div class="col-12 col-sm-5 col-md-6 col-lg-4 col-xl-3">
                         <div class="searchbar">
@@ -89,9 +89,9 @@
                                 <div class="card-body d-flex">
                                     <!-- <?=print_r($_SESSION)?> -->
                                     <?php if($p['status'] == 0 && isset($_SESSION['user_id'])): ?>
-                                        <a href="project-details.php?id=<?=$p['idProject'] ?>" class="btn btn-success rounded-0 ms-auto">Donate</a>
+                                        <a href="project.php?id=<?=$p['idProject'] ?>" class="btn btn-success rounded-0 ms-auto">Donate</a>
                                     <?php else: ?>
-                                        <a href="project-details.php?id=<?=$p['idProject'] ?>" class="btn btn-outline-success rounded-0 ms-auto">View</a>
+                                        <a href="project.php?id=<?=$p['idProject'] ?>" class="btn btn-outline-success rounded-0 ms-auto">View</a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -100,6 +100,8 @@
                 </div>
             </div>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>
 </html>

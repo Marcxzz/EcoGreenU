@@ -49,7 +49,7 @@
         try {
             $query->execute();
             $infoMsg = 'Donation confirmed successfully';
-            header("refresh:1;url=../pages/project-details.php?id=$projectId"); // reindirizza l'utente dopo 3 secondi}
+            header("refresh:1;url=../pages/project.php?id=$projectId"); // reindirizza l'utente dopo 3 secondi}
             $query->close();
         } catch (mysqli_sql_exception $e) {
             $errorMsg = "Error during the payment processing: " . $e->getMessage();

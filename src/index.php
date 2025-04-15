@@ -74,7 +74,7 @@
                                     <li class="list-group-item">Raised: <span class="text-success fw-bold"><?=number_format($p["raisedAmount"], 2) ?></span>/<?=number_format($p["targetAmount"], 2) ?>$</li>
                                 </ul>
                                 <div class="card-body d-flex">
-                                    <a href="pages/project-details.php?id=<?=$p['idProject'] ?>" class="btn btn-success rounded-0 ms-auto">Donate</a>
+                                    <a href="pages/project.php?id=<?=$p['idProject'] ?>" class="btn btn-success rounded-0 ms-auto">Donate</a>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,9 @@
                 </div>
                 <a href="pages/projects.php" class="btn text-success rounded-0 w-100 mt-3">Explore more projects</a>
             </div>
-        </div>        
+        </div>   
+        
+        <?php include_once "shared/footer.php" ?>     
     </div>
 
     <script>

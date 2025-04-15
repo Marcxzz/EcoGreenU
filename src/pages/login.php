@@ -64,5 +64,7 @@
                 <p class="mb-0 text-center" style="margin-top: 50px;">Not registered yet? <a class="text-success" href="../pages/signup.php">Create an account</a></p>
             </form>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>

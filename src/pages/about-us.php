@@ -69,5 +69,7 @@
                 </section>
             </div>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>

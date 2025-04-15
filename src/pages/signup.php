@@ -72,5 +72,7 @@
                 <p class="mb-0 text-center" style="margin-top: 50px;">Already registered? <a class="text-success" href="../pages/login.php">Log in</a></p>
             </form>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>

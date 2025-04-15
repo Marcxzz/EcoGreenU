@@ -76,7 +76,7 @@
                     </label>
                 </div>
                 <button type="submit" class="btn btn-success w-100 rounded-0 mt-5" name="donate">Confirm donation</button>
-                <a class="btn text-secondary rounded-0 w-100 mt-3" href="project-details.php?id=1">Cancel</a>
+                <a class="btn text-secondary rounded-0 w-100 mt-3" href="project.php?id=1">Cancel</a>
                 <p class="text-danger text-center my-3"><?=$errorMsg?></p>
                 <p class="text-success text-center my-3"><?=$infoMsg?></p>
             </form>
@@ -101,30 +101,7 @@
                 </div>
             </div>
         </div> -->
-
-        <!-- <div class="modal fade" tabindex="-1" id="confirmCancelModal" data-bs-backdrop="static" data-bs-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Confirm save changes</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to edit your profile information?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success rounded-0" data-bs-dismiss="modal">No</button>
-                        <a href="project-details.php?id=1" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Cancel</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
-    <script>
-        const myModal = document.getElementById('myModal')
-        const myInput = document.getElementById('myInput')
-
-        myModal.addEventListener('shown.bs.modal', () => {
-            myInput.focus()
-        })
-    </script>
 </body>

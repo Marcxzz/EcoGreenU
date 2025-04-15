@@ -1,4 +1,4 @@
-form, .form-floating, #loginBtn, #signupBtn{
+form:not(.modal form), .form-floating:not(.modal .form-floating), #loginBtn, #signupBtn{
     width: 100% !important;
     max-width: 450px !important;
 }

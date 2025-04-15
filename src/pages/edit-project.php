@@ -48,11 +48,11 @@
         </nav>
 
         <div class="container-fluid p-3 m-0" id="main">
-            <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+            <div class="d-flex flex-column justify-content-center align-items-center h-100">
                 <?php if(!isset($project["img"])): ?>
-                    <img src="../assets/images/proj-thumbnail-default.jpg" class="edit-project-thumb-preview mb-2" alt="<?=$p["title"]?>">
+                    <img src="../assets/images/proj-thumbnail-default.jpg" class="edit-project-thumb-preview mb-2 mt-5" alt="<?=$p["title"]?>">
                 <?php else: ?>
-                    <img src="../assets/images/projects/<?=$project['img']?>" alt="<?=$project['title']?>" class="edit-project-thumb-preview mb-2">
+                    <img src="../assets/images/projects/<?=$project['img']?>" alt="<?=$project['title']?>" class="edit-project-thumb-preview mb-2 mt-5">
                 <?php endif; ?>
                 <form action="edit-project.php?id=<?=$projectId?>" method="post" enctype="multipart/form-data">
                     <input type="file" class="form-control rounded-0 focus-ring focus-ring-success mb-3" name="thumbnail" accept=".jpg,.png,.jpeg">
@@ -73,7 +73,7 @@
                         <label for="floatingDeadline">Deadline</label>
                     </div>
                     <button type="submit" class="btn btn-success w-100 rounded-0" name="editProject">Edit project</button>
-                    <button type="button" class="btn text-danger rounded-0 w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteProjectModal">Delete profile</button>
+                    <button type="button" class="btn text-danger rounded-0 w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteProjectModal">Delete project</button>
                     <p class="text-danger text-center my-3 w-100"><?=$errorMsg?></p>
                     <p class="text-success text-center my-3 w-100"><?=$infoMsg?></p>
                 </form>
@@ -99,6 +99,8 @@
                 </div>
             </div>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>
 </html>

@@ -35,7 +35,7 @@
             $query->close();
             $db->close();
             $infoMsg = "Project added successfully! with ID $projectId";
-            header("refresh:3;url=../pages/project-details.php?id=$projectId"); // reindirizza l'utente dopo 3 secondi
+            header("refresh:3;url=../pages/project.php?id=$projectId"); // reindirizza l'utente dopo 3 secondi
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() == 1062) { // codice errore per violazionw del vincolo UNIQUe
                 $errorMsg = "Error: a project already exists with this title.";

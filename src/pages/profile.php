@@ -92,7 +92,7 @@
                                             </div>
                                             <div class="row g-3">
                                                 <div class="col-12 col-md-6">
-                                                    <a href="project-details.php?id=<?=$p['idProject']?>" class="btn btn-success rounded-0 w-100">View</a>
+                                                    <a href="project.php?id=<?=$p['idProject']?>" class="btn btn-success rounded-0 w-100">View</a>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <a href="edit-project.php?id=<?=$p['idProject']?>" class="btn btn-outline-success rounded-0 w-100">Edit</a>
@@ -143,7 +143,7 @@
                                 <?php foreach ($contibutions as $c): ?>
                                     <tr>
                                         <td>
-                                            <a href="project-details.php?id=<?=$c['projectId']?>" class="text-success"><?=$c["title"]?></a>
+                                            <a href="project.php?id=<?=$c['projectId']?>" class="text-success"><?=$c["title"]?></a>
                                             <?php if($c['public'] == 1): ?>
                                                 <span class="badge rounded-pill text-bg-success ms-2">Private</span>
                                             <?php endif; ?>
@@ -163,5 +163,7 @@
                 <?php endif; ?>
             </div>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>

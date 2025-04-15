@@ -1,4 +1,4 @@
-<?php include_once '../php/projects/project-details.php' ?>
+<?php include_once '../php/projects/project.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -121,6 +121,8 @@
             <?php else: echo 'no project found'; ?>
             <?php endif; ?>
         </div>
+        
+        <?php include_once "../shared/footer.php" ?>
     </div>
 </body>
 </html>

@@ -8,6 +8,9 @@
 
     if (isset($_GET['id'])) {
         $project_id = $_GET['id'];
+        if (!is_numeric($project_id)) {
+            exit("Invalid project ID");
+        }
 
         $db = new mysqli("localhost", "root", "", "dbecogreenu");
         if ($db->connect_error) {

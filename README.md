@@ -1,10 +1,10 @@
-# 🌱 EcoGreenU
+# EcoGreenU
 **EcoGreenU** is a school project developed as a web platform that supports **crowdfunding for eco-sustainable and tech-innovative projects**. The goal is to create a digital environment where users can **discover, support, and share green initiatives** that help create a better world.
 
 > _"Help create a better world"_
 
 
-## 📘 About the Project
+## About the Project
 This application was built as part of a school assignment to explore web development using **PHP**, **MySQL**, **HTML**, **CSS**, and **JavaScript**, with **XAMPP** as the local development environment.
 
 EcoGreenU simulates a fully functional web platform designed for:
@@ -19,7 +19,7 @@ If you'd like to see all my design choices, you can find them within the [Design
 If you'd like to see the class diagram, here's the [.dia version](docs/class-diagram.dia) (made with [Dia](http://dia-installer.de/) software), otherwise the [markdown version](docs/class-diagram.md).
 
 
-## 🔧 Features
+## Features
 - Homepage with introductory content
 - User registration and login system
 - Project listing page with searching
@@ -30,7 +30,7 @@ If you'd like to see the class diagram, here's the [.dia version](docs/class-dia
 - Project submission
 
 
-## 🗂️ Project structure
+## Project structure
 ```bash
 EcoGreenU
 ├── docs                        # documentation files (class diagram, design choises report, etc.)
@@ -48,7 +48,7 @@ EcoGreenU
 ```
 
 
-## 🧠 Educational Purpose
+## Educational Purpose
 This project was built with the goal of learning:
 - Backend development with **PHP & MySQL**
 - Frontend structuring using **HTML/CSS/JS**
@@ -56,7 +56,7 @@ This project was built with the goal of learning:
 - Working with local servers (**XAMPP**)
 
 
-## 🧩 Tech Stack
+## Tech Stack
 - **PHP** (backend & server-side logic)
 - **MySQL** (database)
 - **HTML5** & **CSS3** (frontend)
@@ -65,7 +65,7 @@ This project was built with the goal of learning:
 - **Git** (version control)
 
 
-## 🚀 How to Run the Project
+## How to Run the Project
 1. Clone this repository
 2. Place it in your `htdocs` folder (inside XAMPP)
 3. Start Apache and MySQL via the XAMPP control panel
@@ -73,5 +73,5 @@ This project was built with the goal of learning:
 5. Navigate to the project directory in your browser
 
 
-## 📃 License
+## License
 This project is for **educational use only** and not intended for commercial deployment. However, you'll still need my approval to use this project, especially if for lucrative purposes.
