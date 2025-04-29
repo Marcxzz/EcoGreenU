@@ -16,7 +16,7 @@ EcoGreenU simulates a fully functional web platform designed for:
 - Donate to eco-sustainable projects
 
 If you'd like to see all my design choices, you can find them within the [Design Choices Report](docs/report.md).
-If you'd like to see the class diagram, here's the [.dia version](docs/class-diagram.dia) (made with [Dia](http://dia-installer.de/) software), otherwise the [markdown version](docs/class-diagram.md).
+If you wanna take a loot to the class diagram, [here you are](docs/class-diagram.md).
 
 
 ## Features
@@ -32,15 +32,16 @@ If you'd like to see the class diagram, here's the [.dia version](docs/class-dia
 
 ## Project structure
 ```bash
-EcoGreenU
-├── docs                        # documentation files (class diagram, design choises report, etc.)
-├── src                         # project main folder
-|   ├── assets                  # assets folder (logos, projects thumbnail, etc.)
-|   ├── css                     # css style sheets
-|   ├── js                      # js scripts
-|   ├── pages                   # html/php pages (.php)
-|   ├── php                     # php scripts for backend and server-side logic
-|   ├── sql                     # db-related files (SQL commands)
+/EcoGreenU
+├── /docs                       # documentation files (class diagram, design choises report, etc.)
+├── /src                        # project main folder
+|   ├── /assets                 # assets folder (logos, projects thumbnail, etc.)
+|   ├── /css                    # css style sheets
+|   ├── /js                     # js scripts
+|   ├── /pages                  # html/php pages (.php)
+|   ├── /php                    # php scripts for backend and server-side logic
+|   ├── /shared                 # shared components/files
+|   ├── /sql                    # db-related files (SQL commands)
 |   |   └── 1-create-tables.sql # CREATE DATABASE & CREATE TABLE queries
 |   |   └── 2-insert-into.sql   # INSERTO INTO queries
 |   └── index.php               # main page

@@ -130,6 +130,7 @@ Di seguito, al struttura della directory del progetto:
 |   ├── /php                    # script php per il backend e la logica server-side
 |   |   ├── /projects           # script php per le pagine riguardanti progetti (esplora, pagina dettagli, donazione, ecc.)
 |   |   └── /user               # script php per le pagine riguardanti l'utente (registrazione, login, profilo, ecc.)
+|   ├── /shared                 # componenti/file riutilizzabili
 |   ├── /sql                     
 |   |   └── 1-create-tables.sql # query CREATE TABLE
 |   |   └── 2-insert-into.sql   # query INSERT INTO

@@ -1,3 +1,5 @@
+USE dbEcoGreenU;
+
 INSERT INTO tblpaymentmethods (idPaymentMethod, name) VALUES
 (1, 'Credit Card'),
 (2, 'Debit Card'),
